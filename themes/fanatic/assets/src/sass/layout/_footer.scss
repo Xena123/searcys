@@ -1,0 +1,47 @@
+/*------------------------------------|
+|	Footer                              |
+|------------------------------------*/
+
+.l-footer {
+  background-color: $colour-footer;
+  color: $colour-text-footer;
+  padding: 15px 0 30px; 
+  text-transform: uppercase;
+  a {
+    color: $colour-text-footer;
+    text-transform: uppercase;
+  }
+  @include mediaMin($bp-phone-l) {
+    padding: 30px 0 30px; 
+  }
+}
+
+.l-footer__wrap {
+  position: relative;
+}
+
+.l-footer__logo {
+  margin: auto;
+  text-align: center;
+  max-width: 35px;
+  @include mediaMin($bp-phone-l) {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    max-width: none;
+  }
+}
+
+.l-footer__nav {
+  text-align: center;
+  margin: auto;
+}
+
+.l-footer--bottom {
+  text-align: center;
+  margin: auto;
+  @include font-size(12, 12, 225);
+  @include mediaMin($bp-phone-l) {
+    @include font-size(14, 14, 225);
+  }
+}

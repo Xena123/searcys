@@ -1,0 +1,62 @@
+/*------------------------------------|
+|	Banners                             |
+|------------------------------------*/
+.l-banner {
+  position: relative;
+  max-height: 500px;
+  min-height: 300px;
+}
+
+.l-banner-image {
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  .post-edit-link {
+    top: 60px;
+    left: 25%;
+  }
+}
+
+.l-banner-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  @include center-vertical;
+  z-index: 2;
+  margin: auto;
+  text-align: center;
+  max-width: 90%;
+  @include mediaMin($bp-laptop-s) {
+    max-width: 80%;
+  }
+}
+
+.l-banner--single {
+  margin-bottom: 30px;
+  height: 33vw;
+  @include mediaMin($break-col-quarter-2) {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+.l-banner__slider {
+  margin-bottom: 50px;
+  @include mediaMin($break-col-quarter-2) {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+.l-banner--overlay {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(26,30,42,0.6);
+}

@@ -1,0 +1,36 @@
+//-----------------------------------
+//	Box Model Mixins
+//-----------------------------------
+
+// Define Box Model
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model;
+  -moz-box-sizing: $box-model;
+  box-sizing: $box-model;
+}
+
+
+//------ Remove all borders & outlines on elements (buttons & input) ------//
+@mixin input-reset {
+  border: none;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+// Force ratio
+  // Pseudo: Is it a pseudo element?
+  // @include responsive-ratio(16, 9);
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+    $padding: unquote( ( $y / $x ) * 100 + '%' );
+    @if $pseudo {
+        &:before {
+            @include pseudo($pos: relative);
+            width: 100%;
+            padding-top: $padding;
+        }
+    } @else {
+        padding-top: $padding;
+    }
+}

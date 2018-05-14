@@ -1,0 +1,57 @@
+//-----------------------------------
+//	Positioning Mixins
+//-----------------------------------
+
+// Absolute position element to cover whole parent
+@mixin cover($top: 0, $right : 0, $bottom : 0, $left : 0) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+// Position element shorthand
+@mixin position($type, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $type;
+    top: $top;
+    bottom: $bottom;
+    right: $right;
+    left: $left;
+}
+
+// Add auto left & right margins without mucking up top & bottom margins
+@mixin center-margin {
+    margin: {
+        left: auto;
+        right: auto;
+    }
+}
+
+// Center element vertically & horizontally in parent
+@mixin center-element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+// Center element vertically in parent
+@mixin center-vertical {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// Expand Div to fill remaining width
+// Add to expanded div. Must be second div
+@mixin sticky-expand {
+  overflow: hidden;
+}
+// Left Stick: Add to stuck div. Must be first div
+@mixin sticky-left-fixed {
+  float: left;
+}
+// Right Stick: Add to stuck div. Must be first div
+@mixin sticky-right-fixed {
+  float: right;
+}

@@ -1,0 +1,221 @@
+//-----------------------------------
+//	Grid Mixins
+//-----------------------------------
+
+// Column - Full
+@mixin column-full {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    @include mediaMin($break-col-quarter-2) {
+      width: 99%;
+      width: calc(100% - 30px);
+      margin-left: 15px;
+      margin-right: 15px;
+      //margin-bottom: 15px;
+    }
+  }
+}
+
+// Column - Quarter
+@mixin column-quarter {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    @include mediaMin($break-col-quarter-2) {
+      width: 98%;
+      width: calc(100% - 30px);
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+    @include mediaMin($bp-phone-l) {
+      display: inline-block;
+      width: 48.4%;
+      width: calc(50% - 30px);
+      margin-left: 15px;
+      margin-right: 15px;
+      margin-bottom: 15px;
+    }
+    @include mediaMin($bp-nav) {
+      width: calc(50% - 30px);
+      margin-left: 15px;
+      margin-right: 15px;
+      margin-bottom: 30px;
+    }
+
+    @include mediaMin($bp-tablet-xl) {
+      width: 23.4%;
+      width: calc(25% - 30px);
+      margin-left: 15px;
+      margin-right: 15px;
+      margin-bottom: 0;
+    }
+  }
+}
+// Column - Half
+@mixin column-half {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    @include mediaMin($break-col-quarter-2) {
+      width: 98%;
+      width: calc(100% - 30px);
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+    @include mediaMin($break-col-half-2) {
+      display: inline-block;
+      width: 48.4%;
+      width: calc(50% - 30px);
+      margin-bottom: 0;
+    }
+  }
+}
+// Column - Third
+@mixin column-third {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  @include mediaMin($break-col-quarter-2) {
+    .grid-item__inner {
+      width: 98%;
+      width: calc(100% - 30px);
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+  }
+  @include mediaMin($bp-tablet-xl) {
+    .grid-item__inner {
+      display: inline-block;
+      width: 31.73%;
+      width: calc(33.3% - 30px);
+      margin-left: 15px;
+      margin-right: 15px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Column - Two Thirds
+@mixin column-two-third {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  @include mediaMin($break-col-quarter-2) {
+    .grid-item__inner {
+      width: 98%;
+      width: calc(100% - 30px);
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+  }
+  @include mediaMin($bp-tablet-xl) {
+    .grid-item__inner {
+      display: inline-block;
+      width: 63.46%;
+      width: calc(66.6% - 30px);
+      margin-left: 15px;
+      margin-right: 15px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+// Column - Third
+@mixin column-third-nopad {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    @include mediaMin($break-col-third-2) {
+      display: inline-block;
+      width: 33.3%;
+    }
+  }
+}
+
+@mixin column-three-quarter {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    @include mediaMin($break-col-quarter-2) {
+      display: inline-block;
+      width: 98%;
+      width: calc(100% - 30px);
+      margin-left: 15px;
+      margin-right: 15px;
+      //margin-bottom: 15px;
+    }
+    @include mediaMin($break-col-quarter-4) {
+      width: 73.9%;
+      width: calc(75% - 30px);
+    }
+  }
+}
+
+
+// Column - Sixth
+@mixin column-sixth {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    @include mediaMin($break-col-sixth-2) {
+      display: inline-block;
+      width: 48.4%;
+      margin-left: 7.5px;
+      margin-right: 7.5px;
+    }
+    @include mediaMin($break-col-sixth-3) {
+      width: 31.73%;
+    }
+    @include mediaMin($break-col-sixth-6) {
+      width: 15%;
+    }
+  }
+}
+// Column - Fifth
+@mixin column-fifth {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    @include mediaMin($break-col-fifth-2) {
+      display: inline-block;
+      width: 48.4%;
+      margin-left: 7.5px;
+      margin-right: 7.5px;
+    }
+    @include mediaMin($break-col-fifth-3) {
+      width: 31.73%;
+    }
+    @include mediaMin($break-col-fifth-5) {
+      width: 18.4%;
+    }
+  }
+}
+
+// Column - Half for Venue Listing
+@mixin column-half-listing {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    @include mediaMin($break-col-quarter-2) {
+      width: 98%;
+      width: calc(100% - 30px);
+      margin-left: 7.5px;
+      margin-right: 7.5px;
+    }
+    @include mediaMin($bp-tablet-xl) {
+      display: inline-block;
+      width: 48.4%;
+      width: calc(50% - 15px);
+      margin-bottom: 20px;
+    }
+  }
+}

@@ -1,0 +1,239 @@
+/*------------------------------------|
+|	Nav Links                           |
+|------------------------------------*/
+
+.nav__container {
+  padding: 110px 50px 70px 7%;
+  justify-content: space-between;
+  background-color: $brand-blue;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+  @include mediaMax($bp-phone-l) {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  @include mediaMin($bp-phone-l) {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 80px 50px 70px 7%;
+  }
+  @include mediaMin($bp-tablet-xl) {
+    padding: 0 50px 70px 7%;
+    flex-wrap: nowrap;
+  }
+  > div {
+    flex-grow: 1;
+
+    @include mediaMin($bp-phone-l) {
+      width: 50%;
+    }
+    @include mediaMin($bp-tablet-xl) {
+      width: 25%;
+    }
+  }
+}
+
+.nav--header {
+  padding-top: 20px;
+  min-height: 150px;
+  transition: 0.4s ease-in-out;
+  @include mediaMin($bp-phone-l) {
+    padding-top: 50px;
+  }
+  @include mediaMin($bp-tablet-xl) {
+    padding-top: 220px;
+    height: 350px;
+  }
+  a {
+    color: #fff;
+    display: block;
+  }
+  > li > a {
+    text-transform: uppercase;
+    padding: 15px;
+    @include font-size(20, 20, 250);
+  }
+  .sub-menu {
+    padding-left: 20px;
+    a {
+      padding: 10px;
+      position: relative;
+      @include font-size(16, 16, 100);
+      &:before {
+        content: '-';
+        position: absolute;
+        left: -7px;
+      }
+    }
+  }
+}
+
+#menu-primary-menu-1, 
+#menu-primary-menu-2 {
+  margin-bottom: 20px;
+  @include mediaMin($bp-tablet-xl) {
+    margin-bottom: 0;
+  }
+}
+#menu-primary-menu-3 {
+  @include mediaMax($bp-phone-l) {
+    margin-bottom: 20px;
+  }
+}
+
+.nav__mail,
+.nav__tel {
+  background-size: contain;
+  height: 12px;
+}
+
+.nav__tel {
+  background: transparent url('../img/icons/phone_white.png') no-repeat center center;
+  width: 12px;
+  @include mediaMin($bp-phone-l) {
+    background: transparent url('../img/icons/phone.png') no-repeat center center;
+  }
+}
+.nav__mail {
+  background: transparent url('../img/icons/mail_white.png') no-repeat center center;
+  width: 15px;
+  @include mediaMin($bp-phone-l) {
+    background: transparent url('../img/icons/mail.png') no-repeat center center;
+  }
+}
+
+.nav--footer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  li {
+    margin: 0 13.5px;
+    display: block;
+    @include mediaMin($bp-phone-l) {
+      display: inline-block;
+    }
+  }
+  a {
+    padding: 7px 0;
+    display: block;
+    @include font-size(12, 12, 225);
+    @include mediaMin($bp-phone-l) {
+      padding: 20px 0;
+      @include font-size(14, 14, 225);
+    }
+  }
+  @include mediaMin($bp-phone-l) {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.nav--venues {
+  margin: auto;
+  text-align: center;
+  margin-bottom: 35px;
+  ul {
+    list-style: none;
+    margin-left: 15px;
+    margin-right: 15px;
+    li {
+      display: inline-block;
+      margin-right: 15px;
+      margin-bottom: 10px;
+      padding-right: 15px;
+      position: relative;
+      &:after {
+        content: '|';
+        position: absolute;
+        font-size: 12px;
+        top: 3px;
+        right: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+        border: none;
+        &:after {
+          display: none;
+        }
+        a {
+          padding-right: 0;
+        }
+      }
+      a {
+        text-transform: uppercase;
+        padding: 10px 0;
+        color: $brand-blue;
+        @include font-size(12, 12, 100);
+      }
+    }
+  }
+}
+
+
+.nav--job {
+  list-style: none;
+  margin-right: 15px;
+  li {
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    padding-right: 15px;
+    position: relative;
+    &:after {
+      content: '|';
+      position: absolute;
+      font-size: 12px;
+      top: 3px;
+      right: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+      border: none;
+      &:after {
+        display: none;
+      }
+      a {
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+
+// Module States
+
+.is-scrolled {
+  .nav--header {
+    @include mediaMin($bp-phone-l) {
+      padding-top: 0;
+    }
+    @include mediaMin($bp-tablet-xl) {
+      padding-top: 135px;
+      height: 265px;
+    }
+  }
+}
+
+.is-menu-open {
+  .nav__container {
+    opacity: 1;
+    pointer-events: initial;
+  }
+  .nav__tel {
+    @include mediaMin($bp-phone-l) {
+      background: transparent url('../img/icons/phone_white.png') no-repeat center center;
+    }
+  }
+  .nav__mail {
+    @include mediaMin($bp-phone-l) {
+      background: transparent url('../img/icons/mail_white.png') no-repeat center center;
+    }
+  }
+}
+
+.is-menu-closed {
+  .nav__container {
+    opacity: 0;
+    pointer-events: none;
+  }
+}

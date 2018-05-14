@@ -1,0 +1,215 @@
+/*------------------------------------|
+|	Site Header                         |
+|------------------------------------*/
+
+.l-header {
+  background-color: $colour-header;
+  height: 130px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 998;
+  transition: 0.4s ease-in-out;
+  a {
+    color: $colour-text-header;
+  }
+  @include mediaMin($bp-phone-l) {
+    height: 140px;
+    position: fixed;
+  }
+}
+
+.logo__wrap {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.l-header__logo {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 235px;
+  display: flex;
+  height: 100%;
+  opacity: 1;
+  //background: transparent url('../img/logos/logo_full.png') no-repeat center center;
+  //background-size: contain;
+  color: #fff;
+  transition: 0.4s ease-in-out;
+
+  svg.searcys-logo {
+    height: auto;
+    transition: all 0.4s;
+    opacity: 1;
+    width: 75%;
+    .cls-1 {
+      fill: #354b54;
+    }
+    @include mediaMax($bp-phone-l) {
+      margin: 0 auto;
+    }
+    @include mediaMin($break-col-quarter-2) {
+      width: 99%;
+    }
+  }
+
+  .chart svg {
+    position: absolute;
+    top: 120%;
+    right: 50%;
+    transform: translateX(50%);
+    height: 50px;
+    width: auto;
+    transition: all 0.4s;
+    opacity: 0;
+    fill: #354b54;
+  }
+
+  .outer {
+    fill: transparent;
+    stroke: #354b54;
+    stroke-width: 4;
+    stroke-dasharray: 534;
+    transition: stroke-dashoffset 1s;
+    -webkit-animation-play-state: running;
+    -moz-transform: rotate(-89deg) translateX(-190px);
+
+  }
+
+  .chart:hover .outer {
+    stroke-dashoffset: 534 !important;
+    -webkit-animation-play-state: paused;
+  }
+
+}
+
+.l-header__brg {
+  position: absolute;
+  z-index: 1000;
+  top: 55px;
+  left:12px;
+  transition: 0.4s ease-in-out;
+  @include mediaMin($break-col-quarter-2) {
+    left: 2.5%;
+    margin-left: 15px;
+    position: fixed;
+  }
+  @include mediaMin($max_width) {
+    left: 5%;
+  }
+  @include mediaMin($bp-desktop) {
+    left: 10%;
+  }
+}
+
+.l-header__social {
+  position: fixed;
+  z-index: 1000;
+  right: 2.5%;
+  margin-right: 15px;
+  top: 55px;
+  transition: 0.4s ease-in-out;
+  img {
+    max-height: 10px;
+  }
+  a {
+    color: $brand_blue;
+    @include font-size(12, 12, 100);
+    transition: 0.4s ease-in-out;
+    display: block;
+  }
+  @include mediaMax($bp-phone-l) {
+    display: none;
+  }
+  @include mediaMin($max_width) {
+    right: 5%;
+  }
+  @include mediaMin($bp-desktop) {
+    right: 10%;
+  }
+}
+
+.l-header__social-mobile {
+  display: none;
+  a {
+    color: #fff;
+    display: block;
+    @include font-size(20, 20, 250);
+  }
+  .social {
+    padding: 15px;
+  }
+  @include mediaMax($bp-phone-l) {
+    display: block;
+  }
+}
+
+.l-header__nav {
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  right: 0;
+  @include mediaMax($bp-phone-l) {
+    position: absolute;
+  }
+}
+
+.js-remove {
+  top: -130%;
+}
+
+// State changes
+.is-menu-open {
+  .l-header__logo {
+    svg {
+      .cls-1{
+        fill: #fff;
+      }
+    }
+    .chart svg {
+      fill: #fff;
+    }
+  }
+  .l-header__social a {
+    color: #fff;
+  }
+  .is-scrolled {
+    .l-header__scrolled_white {
+      opacity: 1;
+    }
+
+  }
+}
+
+.is-scrolled.l-header {
+  height: 80px;
+  box-shadow: 0 0 55px 0 rgba(0,0,0,0.25);
+}
+
+.is-scrolled {
+  .l-header__logo {
+    @include mediaMin($bp-phone-l) {
+      transform: translateY(-81px) translateX(50%);
+      .searcys-logo {
+        opacity: 0;
+      }
+      .chart svg {
+        opacity: 1;
+      }
+    }
+  }
+  .nav__container {
+    margin-top: -1px;
+  }
+  .l-header__brg {
+    top: 30px;
+  }
+  .l-header__social {
+    top: 35px;
+  }
+}
+

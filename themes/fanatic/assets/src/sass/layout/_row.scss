@@ -1,0 +1,26 @@
+.row__cta {
+  display: flex;
+  a {
+    margin-right: 10px;
+    flex-grow: 1;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.row__60 {
+  margin-bottom: 60px;
+}
+
+.row__40 {
+  margin-bottom: 40px;
+}
+
+.row__15 {
+  margin-bottom: 15px !important;
+}
+
+.row__5 {
+  margin-bottom: 5px !important;
+}

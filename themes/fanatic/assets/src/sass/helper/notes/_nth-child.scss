@@ -1,0 +1,48 @@
+
+:nth-child(8) {
+  // Select children: 8
+}
+
+:nth-child(n+6) {
+  // Select children: 6-last
+}
+
+:nth-child(-n+9) {
+  // Select children: 1-9
+}
+
+:nth-child(n+4):nth-child(-n+8) {
+  // Select children: 4-8
+}
+
+:nth-child(n+2):nth-child(odd):nth-child(-n+9) {
+  // Select children: Odd only between 2 & 9
+}
+
+:nth-child(3n+1):nth-child(even) {
+  // Select children: Every third child this is even starting with one
+}
+
+:nth-of-type(n+3) {
+  // Select type: Only the third of type
+}
+
+:nth-of-type(3) {
+  // Select type: 3-last
+}
+
+:nth-of-type(2n+2) {
+  // Select type: Every two from 2-last
+}
+
+:nth-of-type(-n+5) {
+  // Select type: From 1-5
+}
+
+:nth-of-type(n+3):nth-of-type(-n+6) {
+// Select type: From 3-6
+}
+
+:nth-of-type(n+3):nth-of-type(odd):nth-of-type(-n+6)) {
+// Select type: Odd only from 3-6
+}

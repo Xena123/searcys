@@ -1,0 +1,37 @@
+/*------------------------------------|
+|	Aside                               |
+|------------------------------------*/
+
+.l-aside {
+  vertical-align: top;
+  @include mediaMin($bp-tablet-m) {
+    display: inline-block;
+    width: 33%;
+  }
+  @include mediaMin($bp-tablet-xl) {
+    width: 30%;
+  }
+  @include mediaMin($bp-laptop-s) {
+    width: 25%;
+  }
+}
+
+.l-aside__main {
+  vertical-align: top;
+  @include mediaMin($bp-tablet-m) {
+    display: inline-block;
+    margin-right: 1%;
+    width: 65%;
+  }
+  @include mediaMin($bp-tablet-xl) {
+    width: 68%;
+  }
+  @include mediaMin($bp-laptop-s) {
+    width: 73%;
+  }
+}
+
+.l-aside__sticky {
+  position: sticky;
+  top: 80px;
+}

@@ -1,0 +1,22 @@
+/*------------------------------------|
+|	Social                              |
+|------------------------------------*/
+
+
+.social {
+  display: flex;
+  align-items: center;
+  li {
+    margin-right: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $brand-blue;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  i {
+    color: #fff;
+    @include font-size(20);
+  }
+}

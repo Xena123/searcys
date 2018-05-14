@@ -1,0 +1,28 @@
+//-----------------------------------
+//	Font Mixins
+//-----------------------------------
+
+
+// Calculate Font Size, line height, and letter spacing in Rems
+// Usage: @include font-size(14, 16, 24)
+@mixin font-size($size, $height: null, $spacing: null) {
+  font-size: $size * 1px;
+  font-size: rem($size);
+  @if $height != null {
+    line-height: $height * 1px;
+    line-height: rem($height);
+  }
+  @if $spacing != null {
+    letter-spacing: $spacing / 1000  * $size * 1px;
+    letter-spacing: $spacing / 1000  * $size / $base-font-size * 1rem;
+  }
+}
+
+
+// Truncate text
+@mixin truncate($truncation-boundary) {
+    max-width: $truncation-boundary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

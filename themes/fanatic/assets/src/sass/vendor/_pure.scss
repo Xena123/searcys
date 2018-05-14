@@ -1,0 +1,2995 @@
+/*!
+Pure v1.0.0
+Copyright 2013 Yahoo!
+Licensed under the BSD License.
+https://github.com/yahoo/pure/blob/master/LICENSE.md
+*/
+/*!
+
+
+/**
+ * Add this class to an image to make it fit within it's fluid parent wrapper while maintaining
+ * aspect ratio.
+ */
+.pure-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/*csslint regex-selectors:false, known-properties:false, duplicate-properties:false*/
+
+.pure-g {
+    letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
+    *letter-spacing: normal; /* reset IE < 8 */
+    *word-spacing: -0.43em; /* IE < 8: collapse white-space between units */
+    text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+
+    /*
+    Sets the font stack to fonts known to work properly with the above letter
+    and word spacings. See: https://github.com/yahoo/pure/issues/41/
+
+    The following font stack makes Pure Grids work on all known environments.
+
+    * FreeSans: Ships with many Linux distros, including Ubuntu
+
+    * Arimo: Ships with Chrome OS. Arimo has to be defined before Helvetica and
+      Arial to get picked up by the browser, even though neither is available
+      in Chrome OS.
+
+    * Droid Sans: Ships with all versions of Android.
+
+    * Helvetica, Arial, sans-serif: Common font stack on OS X and Windows.
+    */
+    font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+
+    /* Use flexbox when possible to avoid `letter-spacing` side-effects. */
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+
+    /* Prevents distributing space between rows */
+    -webkit-align-content: flex-start;
+        -ms-flex-line-pack: start;
+            align-content: flex-start;
+}
+
+/* IE10 display: -ms-flexbox (and display: flex in IE 11) does not work inside a table; fall back to block and rely on font hack */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	table .pure-g {
+		display: block;
+	}
+}
+
+/* Opera as of 12 on Windows needs word-spacing.
+   The ".opera-only" selector is used to prevent actual prefocus styling
+   and is not required in markup.
+*/
+.opera-only :-o-prefocus,
+.pure-g {
+    word-spacing: -0.43em;
+}
+
+.pure-u {
+    display: inline-block;
+    *display: inline; /* IE < 8: fake inline-block */
+    zoom: 1;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;
+}
+
+/*
+Resets the font family back to the OS/browser's default sans-serif font,
+this the same font stack that Normalize.css sets for the `body`.
+*/
+.pure-g [class *= "pure-u"] {
+  font-family: $font-alpha;
+}
+
+.pure-u-1,
+.pure-u-1-1,
+.pure-u-1-2,
+.pure-u-1-3,
+.pure-u-2-3,
+.pure-u-1-4,
+.pure-u-3-4,
+.pure-u-1-5,
+.pure-u-2-5,
+.pure-u-3-5,
+.pure-u-4-5,
+.pure-u-5-5,
+.pure-u-1-6,
+.pure-u-5-6,
+.pure-u-1-8,
+.pure-u-3-8,
+.pure-u-5-8,
+.pure-u-7-8,
+.pure-u-1-12,
+.pure-u-5-12,
+.pure-u-7-12,
+.pure-u-11-12,
+.pure-u-1-24,
+.pure-u-2-24,
+.pure-u-3-24,
+.pure-u-4-24,
+.pure-u-5-24,
+.pure-u-6-24,
+.pure-u-7-24,
+.pure-u-8-24,
+.pure-u-9-24,
+.pure-u-10-24,
+.pure-u-11-24,
+.pure-u-12-24,
+.pure-u-13-24,
+.pure-u-14-24,
+.pure-u-15-24,
+.pure-u-16-24,
+.pure-u-17-24,
+.pure-u-18-24,
+.pure-u-19-24,
+.pure-u-20-24,
+.pure-u-21-24,
+.pure-u-22-24,
+.pure-u-23-24,
+.pure-u-24-24 {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;
+}
+
+.pure-u-1-24 {
+    width: 4.1667%;
+    *width: 4.1357%;
+}
+
+.pure-u-1-12,
+.pure-u-2-24 {
+    width: 8.3333%;
+    *width: 8.3023%;
+}
+
+.pure-u-1-8,
+.pure-u-3-24 {
+    width: 12.5000%;
+    *width: 12.4690%;
+}
+
+.pure-u-1-6,
+.pure-u-4-24 {
+    width: 16.6667%;
+    *width: 16.6357%;
+}
+
+.pure-u-1-5 {
+    width: 20%;
+    *width: 19.9690%;
+}
+
+.pure-u-5-24 {
+    width: 20.8333%;
+    *width: 20.8023%;
+}
+
+.pure-u-1-4,
+.pure-u-6-24 {
+    width: 25%;
+    *width: 24.9690%;
+}
+
+.pure-u-7-24 {
+    width: 29.1667%;
+    *width: 29.1357%;
+}
+
+.pure-u-1-3,
+.pure-u-8-24 {
+    width: 33.3333%;
+    *width: 33.3023%;
+}
+
+.pure-u-3-8,
+.pure-u-9-24 {
+    width: 37.5000%;
+    *width: 37.4690%;
+}
+
+.pure-u-2-5 {
+    width: 40%;
+    *width: 39.9690%;
+}
+
+.pure-u-5-12,
+.pure-u-10-24 {
+    width: 41.6667%;
+    *width: 41.6357%;
+}
+
+.pure-u-11-24 {
+    width: 45.8333%;
+    *width: 45.8023%;
+}
+
+.pure-u-1-2,
+.pure-u-12-24 {
+    width: 50%;
+    *width: 49.9690%;
+}
+
+.pure-u-13-24 {
+    width: 54.1667%;
+    *width: 54.1357%;
+}
+
+.pure-u-7-12,
+.pure-u-14-24 {
+    width: 58.3333%;
+    *width: 58.3023%;
+}
+
+.pure-u-3-5 {
+    width: 60%;
+    *width: 59.9690%;
+}
+
+.pure-u-5-8,
+.pure-u-15-24 {
+    width: 62.5000%;
+    *width: 62.4690%;
+}
+
+.pure-u-2-3,
+.pure-u-16-24 {
+    width: 66.6667%;
+    *width: 66.6357%;
+}
+
+.pure-u-17-24 {
+    width: 70.8333%;
+    *width: 70.8023%;
+}
+
+.pure-u-3-4,
+.pure-u-18-24 {
+    width: 75%;
+    *width: 74.9690%;
+}
+
+.pure-u-19-24 {
+    width: 79.1667%;
+    *width: 79.1357%;
+}
+
+.pure-u-4-5 {
+    width: 80%;
+    *width: 79.9690%;
+}
+
+.pure-u-5-6,
+.pure-u-20-24 {
+    width: 83.3333%;
+    *width: 83.3023%;
+}
+
+.pure-u-7-8,
+.pure-u-21-24 {
+    width: 87.5000%;
+    *width: 87.4690%;
+}
+
+.pure-u-11-12,
+.pure-u-22-24 {
+    width: 91.6667%;
+    *width: 91.6357%;
+}
+
+.pure-u-23-24 {
+    width: 95.8333%;
+    *width: 95.8023%;
+}
+
+.pure-u-1,
+.pure-u-1-1,
+.pure-u-5-5,
+.pure-u-24-24 {
+    width: 100%;
+}
+.pure-button {
+    /* Structure */
+    display: inline-block;
+    zoom: 1;
+    line-height: normal;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    box-sizing: border-box;
+}
+
+/* Firefox: Get rid of the inner focus border */
+.pure-button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+/* Inherit .pure-g styles */
+.pure-button-group {
+    letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
+    *letter-spacing: normal; /* reset IE < 8 */
+    *word-spacing: -0.43em; /* IE < 8: collapse white-space between units */
+    text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+}
+
+.opera-only :-o-prefocus,
+.pure-button-group {
+    word-spacing: -0.43em;
+}
+
+.pure-button-group .pure-button {
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;
+}
+
+/*csslint outline-none:false*/
+
+.pure-button {
+    font-family: inherit;
+    font-size: 100%;
+    padding: 0.5em 1em;
+    color: #444; /* rgba not supported (IE 8) */
+    color: rgba(0, 0, 0, 0.80); /* rgba supported */
+    border: 1px solid #999;  /*IE 6/7/8*/
+    border: none rgba(0, 0, 0, 0);  /*IE9 + everything else*/
+    background-color: #E6E6E6;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+.pure-button-hover,
+.pure-button:hover,
+.pure-button:focus {
+    /* csslint ignore:start */
+    filter: alpha(opacity=90);
+    /* csslint ignore:end */
+    background-image: -webkit-linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
+    background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
+}
+.pure-button:focus {
+    outline: 0;
+}
+.pure-button-active,
+.pure-button:active {
+    box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
+    border-color: #000\9;
+}
+
+.pure-button[disabled],
+.pure-button-disabled,
+.pure-button-disabled:hover,
+.pure-button-disabled:focus,
+.pure-button-disabled:active {
+    border: none;
+    background-image: none;
+    /* csslint ignore:start */
+    filter: alpha(opacity=40);
+    /* csslint ignore:end */
+    opacity: 0.40;
+    cursor: not-allowed;
+    box-shadow: none;
+    pointer-events: none;
+}
+
+.pure-button-hidden {
+    display: none;
+}
+
+.pure-button-primary,
+.pure-button-selected,
+a.pure-button-primary,
+a.pure-button-selected {
+    background-color: rgb(0, 120, 231);
+    color: #fff;
+}
+
+/* Button Groups */
+.pure-button-group .pure-button {
+    margin: 0;
+    border-radius: 0;
+    border-right: 1px solid #111;  /* fallback color for rgba() for IE7/8 */
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+
+}
+
+.pure-button-group .pure-button:first-child {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.pure-button-group .pure-button:last-child {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-right: none;
+}
+
+/*csslint box-model:false*/
+/*
+Box-model set to false because we're setting a height on select elements, which
+also have border and padding. This is done because some browsers don't render
+the padding. We explicitly set the box-model for select elements to border-box,
+so we can ignore the csslint warning.
+*/
+
+.pure-form input[type="text"],
+.pure-form input[type="password"],
+.pure-form input[type="email"],
+.pure-form input[type="url"],
+.pure-form input[type="date"],
+.pure-form input[type="month"],
+.pure-form input[type="time"],
+.pure-form input[type="datetime"],
+.pure-form input[type="datetime-local"],
+.pure-form input[type="week"],
+.pure-form input[type="number"],
+.pure-form input[type="search"],
+.pure-form input[type="tel"],
+.pure-form input[type="color"],
+.pure-form select,
+.pure-form textarea {
+    padding: 0.5em 0.6em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.pure-form input:not([type]) {
+    padding: 0.5em 0.6em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+/* Chrome (as of v.32/34 on OS X) needs additional room for color to display. */
+/* May be able to remove this tweak as color inputs become more standardized across browsers. */
+.pure-form input[type="color"] {
+    padding: 0.2em 0.5em;
+}
+
+
+.pure-form input[type="text"]:focus,
+.pure-form input[type="password"]:focus,
+.pure-form input[type="email"]:focus,
+.pure-form input[type="url"]:focus,
+.pure-form input[type="date"]:focus,
+.pure-form input[type="month"]:focus,
+.pure-form input[type="time"]:focus,
+.pure-form input[type="datetime"]:focus,
+.pure-form input[type="datetime-local"]:focus,
+.pure-form input[type="week"]:focus,
+.pure-form input[type="number"]:focus,
+.pure-form input[type="search"]:focus,
+.pure-form input[type="tel"]:focus,
+.pure-form input[type="color"]:focus,
+.pure-form select:focus,
+.pure-form textarea:focus {
+    outline: 0;
+    border-color: #129FEA;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.pure-form input:not([type]):focus {
+    outline: 0;
+    border-color: #129FEA;
+}
+
+.pure-form input[type="file"]:focus,
+.pure-form input[type="radio"]:focus,
+.pure-form input[type="checkbox"]:focus {
+    outline: thin solid #129FEA;
+    outline: 1px auto #129FEA;
+}
+.pure-form .pure-checkbox,
+.pure-form .pure-radio {
+    margin: 0.5em 0;
+    display: block;
+}
+
+.pure-form input[type="text"][disabled],
+.pure-form input[type="password"][disabled],
+.pure-form input[type="email"][disabled],
+.pure-form input[type="url"][disabled],
+.pure-form input[type="date"][disabled],
+.pure-form input[type="month"][disabled],
+.pure-form input[type="time"][disabled],
+.pure-form input[type="datetime"][disabled],
+.pure-form input[type="datetime-local"][disabled],
+.pure-form input[type="week"][disabled],
+.pure-form input[type="number"][disabled],
+.pure-form input[type="search"][disabled],
+.pure-form input[type="tel"][disabled],
+.pure-form input[type="color"][disabled],
+.pure-form select[disabled],
+.pure-form textarea[disabled] {
+    cursor: not-allowed;
+    background-color: #eaeded;
+    color: #cad2d3;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.pure-form input:not([type])[disabled] {
+    cursor: not-allowed;
+    background-color: #eaeded;
+    color: #cad2d3;
+}
+.pure-form input[readonly],
+.pure-form select[readonly],
+.pure-form textarea[readonly] {
+    background-color: #eee; /* menu hover bg color */
+    color: #777; /* menu text color */
+    border-color: #ccc;
+}
+
+.pure-form input:focus:invalid,
+.pure-form textarea:focus:invalid,
+.pure-form select:focus:invalid {
+    color: #b94a48;
+    border-color: #e9322d;
+}
+.pure-form input[type="file"]:focus:invalid:focus,
+.pure-form input[type="radio"]:focus:invalid:focus,
+.pure-form input[type="checkbox"]:focus:invalid:focus {
+    outline-color: #e9322d;
+}
+.pure-form select {
+    /* Normalizes the height; padding is not sufficient. */
+    height: 2.25em;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+.pure-form select[multiple] {
+    height: auto;
+}
+.pure-form label {
+    margin: 0.5em 0 0.2em;
+}
+.pure-form fieldset {
+    margin: 0;
+    padding: 0.35em 0 0.75em;
+    border: 0;
+}
+.pure-form legend {
+    display: block;
+    width: 100%;
+    padding: 0.3em 0;
+    margin-bottom: 0.3em;
+    color: #333;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.pure-form-stacked input[type="text"],
+.pure-form-stacked input[type="password"],
+.pure-form-stacked input[type="email"],
+.pure-form-stacked input[type="url"],
+.pure-form-stacked input[type="date"],
+.pure-form-stacked input[type="month"],
+.pure-form-stacked input[type="time"],
+.pure-form-stacked input[type="datetime"],
+.pure-form-stacked input[type="datetime-local"],
+.pure-form-stacked input[type="week"],
+.pure-form-stacked input[type="number"],
+.pure-form-stacked input[type="search"],
+.pure-form-stacked input[type="tel"],
+.pure-form-stacked input[type="color"],
+.pure-form-stacked input[type="file"],
+.pure-form-stacked select,
+.pure-form-stacked label,
+.pure-form-stacked textarea {
+    display: block;
+    margin: 0.25em 0;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.pure-form-stacked input:not([type]) {
+    display: block;
+    margin: 0.25em 0;
+}
+.pure-form-aligned input,
+.pure-form-aligned textarea,
+.pure-form-aligned select,
+/* NOTE: pure-help-inline is deprecated. Use .pure-form-message-inline instead. */
+.pure-form-aligned .pure-help-inline,
+.pure-form-message-inline {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+}
+.pure-form-aligned textarea {
+    vertical-align: top;
+}
+
+/* Aligned Forms */
+.pure-form-aligned .pure-control-group {
+    margin-bottom: 0.5em;
+}
+.pure-form-aligned .pure-control-group label {
+    text-align: right;
+    display: inline-block;
+    vertical-align: middle;
+    width: 10em;
+    margin: 0 1em 0 0;
+}
+.pure-form-aligned .pure-controls {
+    margin: 1.5em 0 0 11em;
+}
+
+/* Rounded Inputs */
+.pure-form input.pure-input-rounded,
+.pure-form .pure-input-rounded {
+    border-radius: 2em;
+    padding: 0.5em 1em;
+}
+
+/* Grouped Inputs */
+.pure-form .pure-group fieldset {
+    margin-bottom: 10px;
+}
+.pure-form .pure-group input,
+.pure-form .pure-group textarea {
+    display: block;
+    padding: 10px;
+    margin: 0 0 -1px;
+    border-radius: 0;
+    position: relative;
+    top: -1px;
+}
+.pure-form .pure-group input:focus,
+.pure-form .pure-group textarea:focus {
+    z-index: 3;
+}
+.pure-form .pure-group input:first-child,
+.pure-form .pure-group textarea:first-child {
+    top: 1px;
+    border-radius: 4px 4px 0 0;
+    margin: 0;
+}
+.pure-form .pure-group input:first-child:last-child,
+.pure-form .pure-group textarea:first-child:last-child {
+    top: 1px;
+    border-radius: 4px;
+    margin: 0;
+}
+.pure-form .pure-group input:last-child,
+.pure-form .pure-group textarea:last-child {
+    top: -2px;
+    border-radius: 0 0 4px 4px;
+    margin: 0;
+}
+.pure-form .pure-group button {
+    margin: 0.35em 0;
+}
+
+.pure-form .pure-input-1 {
+    width: 100%;
+}
+.pure-form .pure-input-3-4 {
+    width: 75%;
+}
+.pure-form .pure-input-2-3 {
+    width: 66%;
+}
+.pure-form .pure-input-1-2 {
+    width: 50%;
+}
+.pure-form .pure-input-1-3 {
+    width: 33%;
+}
+.pure-form .pure-input-1-4 {
+    width: 25%;
+}
+
+/* Inline help for forms */
+/* NOTE: pure-help-inline is deprecated. Use .pure-form-message-inline instead. */
+.pure-form .pure-help-inline,
+.pure-form-message-inline {
+    display: inline-block;
+    padding-left: 0.3em;
+    color: #666;
+    vertical-align: middle;
+    font-size: 0.875em;
+}
+
+/* Block help for forms */
+.pure-form-message {
+    display: block;
+    color: #666;
+    font-size: 0.875em;
+}
+
+@media only screen and (max-width : 480px) {
+    .pure-form button[type="submit"] {
+        margin: 0.7em 0 0;
+    }
+
+    .pure-form input:not([type]),
+    .pure-form input[type="text"],
+    .pure-form input[type="password"],
+    .pure-form input[type="email"],
+    .pure-form input[type="url"],
+    .pure-form input[type="date"],
+    .pure-form input[type="month"],
+    .pure-form input[type="time"],
+    .pure-form input[type="datetime"],
+    .pure-form input[type="datetime-local"],
+    .pure-form input[type="week"],
+    .pure-form input[type="number"],
+    .pure-form input[type="search"],
+    .pure-form input[type="tel"],
+    .pure-form input[type="color"],
+    .pure-form label {
+        margin-bottom: 0.3em;
+        display: block;
+    }
+
+    .pure-group input:not([type]),
+    .pure-group input[type="text"],
+    .pure-group input[type="password"],
+    .pure-group input[type="email"],
+    .pure-group input[type="url"],
+    .pure-group input[type="date"],
+    .pure-group input[type="month"],
+    .pure-group input[type="time"],
+    .pure-group input[type="datetime"],
+    .pure-group input[type="datetime-local"],
+    .pure-group input[type="week"],
+    .pure-group input[type="number"],
+    .pure-group input[type="search"],
+    .pure-group input[type="tel"],
+    .pure-group input[type="color"] {
+        margin-bottom: 0;
+    }
+
+    .pure-form-aligned .pure-control-group label {
+        margin-bottom: 0.3em;
+        text-align: left;
+        display: block;
+        width: 100%;
+    }
+
+    .pure-form-aligned .pure-controls {
+        margin: 1.5em 0 0 0;
+    }
+
+    /* NOTE: pure-help-inline is deprecated. Use .pure-form-message-inline instead. */
+    .pure-form .pure-help-inline,
+    .pure-form-message-inline,
+    .pure-form-message {
+        display: block;
+        font-size: 0.75em;
+        /* Increased bottom padding to make it group with its related input element. */
+        padding: 0.2em 0 0.8em;
+    }
+}
+
+/*csslint adjoining-classes: false, box-model:false*/
+.pure-menu {
+    box-sizing: border-box;
+}
+
+.pure-menu-fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 3;
+}
+
+.pure-menu-list,
+.pure-menu-item {
+    position: relative;
+}
+
+.pure-menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pure-menu-item {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+.pure-menu-link,
+.pure-menu-heading {
+    display: block;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* HORIZONTAL MENU */
+.pure-menu-horizontal {
+    width: 100%;
+    white-space: nowrap;
+}
+
+.pure-menu-horizontal .pure-menu-list {
+    display: inline-block;
+}
+
+/* Initial menus should be inline-block so that they are horizontal */
+.pure-menu-horizontal .pure-menu-item,
+.pure-menu-horizontal .pure-menu-heading,
+.pure-menu-horizontal .pure-menu-separator {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    vertical-align: middle;
+}
+
+/* Submenus should still be display: block; */
+.pure-menu-item .pure-menu-item {
+    display: block;
+}
+
+.pure-menu-children {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 3;
+}
+
+.pure-menu-horizontal .pure-menu-children {
+    left: 0;
+    top: auto;
+    width: inherit;
+}
+
+.pure-menu-allow-hover:hover > .pure-menu-children,
+.pure-menu-active > .pure-menu-children {
+    display: block;
+    position: absolute;
+}
+
+/* Vertical Menus - show the dropdown arrow */
+.pure-menu-has-children > .pure-menu-link:after {
+    padding-left: 0.5em;
+    content: "\25B8";
+    font-size: small;
+}
+
+/* Horizontal Menus - show the dropdown arrow */
+.pure-menu-horizontal .pure-menu-has-children > .pure-menu-link:after {
+    content: "\25BE";
+}
+
+/* scrollable menus */
+.pure-menu-scrollable {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.pure-menu-scrollable .pure-menu-list {
+    display: block;
+}
+
+.pure-menu-horizontal.pure-menu-scrollable .pure-menu-list {
+    display: inline-block;
+}
+
+.pure-menu-horizontal.pure-menu-scrollable {
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    /* a little extra padding for this style to allow for scrollbars */
+    padding: .5em 0;
+}
+
+.pure-menu-horizontal.pure-menu-scrollable::-webkit-scrollbar {
+    display: none;
+}
+
+/* misc default styling */
+
+.pure-menu-separator,
+.pure-menu-horizontal .pure-menu-children .pure-menu-separator {
+    background-color: #ccc;
+    height: 1px;
+    margin: .3em 0;
+}
+
+.pure-menu-horizontal .pure-menu-separator {
+    width: 1px;
+    height: 1.3em;
+    margin: 0 .3em ;
+}
+
+/* Need to reset the separator since submenu is vertical */
+.pure-menu-horizontal .pure-menu-children .pure-menu-separator {
+    display: block;
+    width: auto;
+}
+
+.pure-menu-heading {
+    text-transform: uppercase;
+    color: #565d64;
+}
+
+.pure-menu-link {
+    color: #777;
+}
+
+.pure-menu-children {
+    background-color: #fff;
+}
+
+.pure-menu-link,
+.pure-menu-disabled,
+.pure-menu-heading {
+    padding: .5em 1em;
+}
+
+.pure-menu-disabled {
+    opacity: .5;
+}
+
+.pure-menu-disabled .pure-menu-link:hover {
+    background-color: transparent;
+}
+
+.pure-menu-active > .pure-menu-link,
+.pure-menu-link:hover,
+.pure-menu-link:focus {
+    background-color: #eee;
+}
+
+.pure-menu-selected .pure-menu-link,
+.pure-menu-selected .pure-menu-link:visited {
+    color: #000;
+}
+
+.pure-table {
+    /* Remove spacing between table cells (from Normalize.css) */
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: 1px solid #cbcbcb;
+}
+
+.pure-table caption {
+    color: #000;
+    font: italic 85%/1 arial, sans-serif;
+    padding: 1em 0;
+    text-align: center;
+}
+
+.pure-table td,
+.pure-table th {
+    border-left: 1px solid #cbcbcb;/*  inner column border */
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible; /*to make ths where the title is really long work*/
+    padding: 0.5em 1em; /* cell padding */
+}
+
+/* Consider removing this next declaration block, as it causes problems when
+there's a rowspan on the first cell. Case added to the tests. issue#432 */
+.pure-table td:first-child,
+.pure-table th:first-child {
+    border-left-width: 0;
+}
+
+.pure-table thead {
+    background-color: #e0e0e0;
+    color: #000;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+/*
+striping:
+   even - #fff (white)
+   odd  - #f2f2f2 (light gray)
+*/
+.pure-table td {
+    background-color: transparent;
+}
+.pure-table-odd td {
+    background-color: #f2f2f2;
+}
+
+/* nth-child selector for modern browsers */
+.pure-table-striped tr:nth-child(2n-1) td {
+    background-color: #f2f2f2;
+}
+
+/* BORDERED TABLES */
+.pure-table-bordered td {
+    border-bottom: 1px solid #cbcbcb;
+}
+.pure-table-bordered tbody > tr:last-child > td {
+    border-bottom-width: 0;
+}
+
+
+/* HORIZONTAL BORDERED TABLES */
+
+.pure-table-horizontal td,
+.pure-table-horizontal th {
+    border-width: 0 0 1px 0;
+    border-bottom: 1px solid #cbcbcb;
+}
+.pure-table-horizontal tbody > tr:last-child > td {
+    border-bottom-width: 0;
+}
+
+/*!
+Pure v1.0.0
+Copyright 2013 Yahoo!
+Licensed under the BSD License.
+https://github.com/yahoo/pure/blob/master/LICENSE.md
+*/
+@media screen and (min-width: $bp-nav) {
+    .pure-u-nav-1,
+    .pure-u-nav-1-1,
+    .pure-u-nav-1-2,
+    .pure-u-nav-1-3,
+    .pure-u-nav-2-3,
+    .pure-u-nav-1-4,
+    .pure-u-nav-3-4,
+    .pure-u-nav-1-5,
+    .pure-u-nav-2-5,
+    .pure-u-nav-3-5,
+    .pure-u-nav-4-5,
+    .pure-u-nav-5-5,
+    .pure-u-nav-1-6,
+    .pure-u-nav-5-6,
+    .pure-u-nav-1-8,
+    .pure-u-nav-3-8,
+    .pure-u-nav-5-8,
+    .pure-u-nav-7-8,
+    .pure-u-nav-1-12,
+    .pure-u-nav-5-12,
+    .pure-u-nav-7-12,
+    .pure-u-nav-11-12,
+    .pure-u-nav-1-24,
+    .pure-u-nav-2-24,
+    .pure-u-nav-3-24,
+    .pure-u-nav-4-24,
+    .pure-u-nav-5-24,
+    .pure-u-nav-6-24,
+    .pure-u-nav-7-24,
+    .pure-u-nav-8-24,
+    .pure-u-nav-9-24,
+    .pure-u-nav-10-24,
+    .pure-u-nav-11-24,
+    .pure-u-nav-12-24,
+    .pure-u-nav-13-24,
+    .pure-u-nav-14-24,
+    .pure-u-nav-15-24,
+    .pure-u-nav-16-24,
+    .pure-u-nav-17-24,
+    .pure-u-nav-18-24,
+    .pure-u-nav-19-24,
+    .pure-u-nav-20-24,
+    .pure-u-nav-21-24,
+    .pure-u-nav-22-24,
+    .pure-u-nav-23-24,
+    .pure-u-nav-24-24 {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        letter-spacing: normal;
+        word-spacing: normal;
+        vertical-align: top;
+        text-rendering: auto;
+    }
+
+    .pure-u-nav-1-24 {
+        width: 4.1667%;
+        *width: 4.1357%;
+    }
+
+    .pure-u-nav-1-12,
+    .pure-u-nav-2-24 {
+        width: 8.3333%;
+        *width: 8.3023%;
+    }
+
+    .pure-u-nav-1-8,
+    .pure-u-nav-3-24 {
+        width: 12.5000%;
+        *width: 12.4690%;
+    }
+
+    .pure-u-nav-1-6,
+    .pure-u-nav-4-24 {
+        width: 16.6667%;
+        *width: 16.6357%;
+    }
+
+    .pure-u-nav-1-5 {
+        width: 20%;
+        *width: 19.9690%;
+    }
+
+    .pure-u-nav-5-24 {
+        width: 20.8333%;
+        *width: 20.8023%;
+    }
+
+    .pure-u-nav-1-4,
+    .pure-u-nav-6-24 {
+        width: 25%;
+        *width: 24.9690%;
+    }
+
+    .pure-u-nav-7-24 {
+        width: 29.1667%;
+        *width: 29.1357%;
+    }
+
+    .pure-u-nav-1-3,
+    .pure-u-nav-8-24 {
+        width: 33.3333%;
+        *width: 33.3023%;
+    }
+
+    .pure-u-nav-3-8,
+    .pure-u-nav-9-24 {
+        width: 37.5000%;
+        *width: 37.4690%;
+    }
+
+    .pure-u-nav-2-5 {
+        width: 40%;
+        *width: 39.9690%;
+    }
+
+    .pure-u-nav-5-12,
+    .pure-u-nav-10-24 {
+        width: 41.6667%;
+        *width: 41.6357%;
+    }
+
+    .pure-u-nav-11-24 {
+        width: 45.8333%;
+        *width: 45.8023%;
+    }
+
+    .pure-u-nav-1-2,
+    .pure-u-nav-12-24 {
+        width: 50%;
+        *width: 49.9690%;
+    }
+
+    .pure-u-nav-13-24 {
+        width: 54.1667%;
+        *width: 54.1357%;
+    }
+
+    .pure-u-nav-7-12,
+    .pure-u-nav-14-24 {
+        width: 58.3333%;
+        *width: 58.3023%;
+    }
+
+    .pure-u-nav-3-5 {
+        width: 60%;
+        *width: 59.9690%;
+    }
+
+    .pure-u-nav-5-8,
+    .pure-u-nav-15-24 {
+        width: 62.5000%;
+        *width: 62.4690%;
+    }
+
+    .pure-u-nav-2-3,
+    .pure-u-nav-16-24 {
+        width: 66.6667%;
+        *width: 66.6357%;
+    }
+
+    .pure-u-nav-17-24 {
+        width: 70.8333%;
+        *width: 70.8023%;
+    }
+
+    .pure-u-nav-3-4,
+    .pure-u-nav-18-24 {
+        width: 75%;
+        *width: 74.9690%;
+    }
+
+    .pure-u-nav-19-24 {
+        width: 79.1667%;
+        *width: 79.1357%;
+    }
+
+    .pure-u-nav-4-5 {
+        width: 80%;
+        *width: 79.9690%;
+    }
+
+    .pure-u-nav-5-6,
+    .pure-u-nav-20-24 {
+        width: 83.3333%;
+        *width: 83.3023%;
+    }
+
+    .pure-u-nav-7-8,
+    .pure-u-nav-21-24 {
+        width: 87.5000%;
+        *width: 87.4690%;
+    }
+
+    .pure-u-nav-11-12,
+    .pure-u-nav-22-24 {
+        width: 91.6667%;
+        *width: 91.6357%;
+    }
+
+    .pure-u-nav-23-24 {
+        width: 95.8333%;
+        *width: 95.8023%;
+    }
+
+    .pure-u-nav-1,
+    .pure-u-nav-1-1,
+    .pure-u-nav-5-5,
+    .pure-u-nav-24-24 {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: $bp-phone) {
+    .pure-u-p-1,
+    .pure-u-p-1-1,
+    .pure-u-p-1-2,
+    .pure-u-p-1-3,
+    .pure-u-p-2-3,
+    .pure-u-p-1-4,
+    .pure-u-p-3-4,
+    .pure-u-p-1-5,
+    .pure-u-p-2-5,
+    .pure-u-p-3-5,
+    .pure-u-p-4-5,
+    .pure-u-p-5-5,
+    .pure-u-p-1-6,
+    .pure-u-p-5-6,
+    .pure-u-p-1-8,
+    .pure-u-p-3-8,
+    .pure-u-p-5-8,
+    .pure-u-p-7-8,
+    .pure-u-p-1-12,
+    .pure-u-p-5-12,
+    .pure-u-p-7-12,
+    .pure-u-p-11-12,
+    .pure-u-p-1-24,
+    .pure-u-p-2-24,
+    .pure-u-p-3-24,
+    .pure-u-p-4-24,
+    .pure-u-p-5-24,
+    .pure-u-p-6-24,
+    .pure-u-p-7-24,
+    .pure-u-p-8-24,
+    .pure-u-p-9-24,
+    .pure-u-p-10-24,
+    .pure-u-p-11-24,
+    .pure-u-p-12-24,
+    .pure-u-p-13-24,
+    .pure-u-p-14-24,
+    .pure-u-p-15-24,
+    .pure-u-p-16-24,
+    .pure-u-p-17-24,
+    .pure-u-p-18-24,
+    .pure-u-p-19-24,
+    .pure-u-p-20-24,
+    .pure-u-p-21-24,
+    .pure-u-p-22-24,
+    .pure-u-p-23-24,
+    .pure-u-p-24-24 {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        letter-spacing: normal;
+        word-spacing: normal;
+        vertical-align: top;
+        text-rendering: auto;
+    }
+
+    .pure-u-p-1-24 {
+        width: 4.1667%;
+        *width: 4.1357%;
+    }
+
+    .pure-u-p-1-12,
+    .pure-u-p-2-24 {
+        width: 8.3333%;
+        *width: 8.3023%;
+    }
+
+    .pure-u-p-1-8,
+    .pure-u-p-3-24 {
+        width: 12.5000%;
+        *width: 12.4690%;
+    }
+
+    .pure-u-p-1-6,
+    .pure-u-p-4-24 {
+        width: 16.6667%;
+        *width: 16.6357%;
+    }
+
+    .pure-u-p-1-5 {
+        width: 20%;
+        *width: 19.9690%;
+    }
+
+    .pure-u-p-5-24 {
+        width: 20.8333%;
+        *width: 20.8023%;
+    }
+
+    .pure-u-p-1-4,
+    .pure-u-p-6-24 {
+        width: 25%;
+        *width: 24.9690%;
+    }
+
+    .pure-u-p-7-24 {
+        width: 29.1667%;
+        *width: 29.1357%;
+    }
+
+    .pure-u-p-1-3,
+    .pure-u-p-8-24 {
+        width: 33.3333%;
+        *width: 33.3023%;
+    }
+
+    .pure-u-p-3-8,
+    .pure-u-p-9-24 {
+        width: 37.5000%;
+        *width: 37.4690%;
+    }
+
+    .pure-u-p-2-5 {
+        width: 40%;
+        *width: 39.9690%;
+    }
+
+    .pure-u-p-5-12,
+    .pure-u-p-10-24 {
+        width: 41.6667%;
+        *width: 41.6357%;
+    }
+
+    .pure-u-p-11-24 {
+        width: 45.8333%;
+        *width: 45.8023%;
+    }
+
+    .pure-u-p-1-2,
+    .pure-u-p-12-24 {
+        width: 50%;
+        *width: 49.9690%;
+    }
+
+    .pure-u-p-13-24 {
+        width: 54.1667%;
+        *width: 54.1357%;
+    }
+
+    .pure-u-p-7-12,
+    .pure-u-p-14-24 {
+        width: 58.3333%;
+        *width: 58.3023%;
+    }
+
+    .pure-u-p-3-5 {
+        width: 60%;
+        *width: 59.9690%;
+    }
+
+    .pure-u-p-5-8,
+    .pure-u-p-15-24 {
+        width: 62.5000%;
+        *width: 62.4690%;
+    }
+
+    .pure-u-p-2-3,
+    .pure-u-p-16-24 {
+        width: 66.6667%;
+        *width: 66.6357%;
+    }
+
+    .pure-u-p-17-24 {
+        width: 70.8333%;
+        *width: 70.8023%;
+    }
+
+    .pure-u-p-3-4,
+    .pure-u-p-18-24 {
+        width: 75%;
+        *width: 74.9690%;
+    }
+
+    .pure-u-p-19-24 {
+        width: 79.1667%;
+        *width: 79.1357%;
+    }
+
+    .pure-u-p-4-5 {
+        width: 80%;
+        *width: 79.9690%;
+    }
+
+    .pure-u-p-5-6,
+    .pure-u-p-20-24 {
+        width: 83.3333%;
+        *width: 83.3023%;
+    }
+
+    .pure-u-p-7-8,
+    .pure-u-p-21-24 {
+        width: 87.5000%;
+        *width: 87.4690%;
+    }
+
+    .pure-u-p-11-12,
+    .pure-u-p-22-24 {
+        width: 91.6667%;
+        *width: 91.6357%;
+    }
+
+    .pure-u-p-23-24 {
+        width: 95.8333%;
+        *width: 95.8023%;
+    }
+
+    .pure-u-p-1,
+    .pure-u-p-1-1,
+    .pure-u-p-5-5,
+    .pure-u-p-24-24 {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: $bp-phone-l) {
+    .pure-u-pl-1,
+    .pure-u-pl-1-1,
+    .pure-u-pl-1-2,
+    .pure-u-pl-1-3,
+    .pure-u-pl-2-3,
+    .pure-u-pl-1-4,
+    .pure-u-pl-3-4,
+    .pure-u-pl-1-5,
+    .pure-u-pl-2-5,
+    .pure-u-pl-3-5,
+    .pure-u-pl-4-5,
+    .pure-u-pl-5-5,
+    .pure-u-pl-1-6,
+    .pure-u-pl-5-6,
+    .pure-u-pl-1-8,
+    .pure-u-pl-3-8,
+    .pure-u-pl-5-8,
+    .pure-u-pl-7-8,
+    .pure-u-pl-1-12,
+    .pure-u-pl-5-12,
+    .pure-u-pl-7-12,
+    .pure-u-pl-11-12,
+    .pure-u-pl-1-24,
+    .pure-u-pl-2-24,
+    .pure-u-pl-3-24,
+    .pure-u-pl-4-24,
+    .pure-u-pl-5-24,
+    .pure-u-pl-6-24,
+    .pure-u-pl-7-24,
+    .pure-u-pl-8-24,
+    .pure-u-pl-9-24,
+    .pure-u-pl-10-24,
+    .pure-u-pl-11-24,
+    .pure-u-pl-12-24,
+    .pure-u-pl-13-24,
+    .pure-u-pl-14-24,
+    .pure-u-pl-15-24,
+    .pure-u-pl-16-24,
+    .pure-u-pl-17-24,
+    .pure-u-pl-18-24,
+    .pure-u-pl-19-24,
+    .pure-u-pl-20-24,
+    .pure-u-pl-21-24,
+    .pure-u-pl-22-24,
+    .pure-u-pl-23-24,
+    .pure-u-pl-24-24 {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        letter-spacing: normal;
+        word-spacing: normal;
+        vertical-align: top;
+        text-rendering: auto;
+    }
+
+    .pure-u-pl-1-24 {
+        width: 4.1667%;
+        *width: 4.1357%;
+    }
+
+    .pure-u-pl-1-12,
+    .pure-u-pl-2-24 {
+        width: 8.3333%;
+        *width: 8.3023%;
+    }
+
+    .pure-u-pl-1-8,
+    .pure-u-pl-3-24 {
+        width: 12.5000%;
+        *width: 12.4690%;
+    }
+
+    .pure-u-pl-1-6,
+    .pure-u-pl-4-24 {
+        width: 16.6667%;
+        *width: 16.6357%;
+    }
+
+    .pure-u-pl-1-5 {
+        width: 20%;
+        *width: 19.9690%;
+    }
+
+    .pure-u-pl-5-24 {
+        width: 20.8333%;
+        *width: 20.8023%;
+    }
+
+    .pure-u-pl-1-4,
+    .pure-u-pl-6-24 {
+        width: 25%;
+        *width: 24.9690%;
+    }
+
+    .pure-u-pl-7-24 {
+        width: 29.1667%;
+        *width: 29.1357%;
+    }
+
+    .pure-u-pl-1-3,
+    .pure-u-pl-8-24 {
+        width: 33.3333%;
+        *width: 33.3023%;
+    }
+
+    .pure-u-pl-3-8,
+    .pure-u-pl-9-24 {
+        width: 37.5000%;
+        *width: 37.4690%;
+    }
+
+    .pure-u-pl-2-5 {
+        width: 40%;
+        *width: 39.9690%;
+    }
+
+    .pure-u-pl-5-12,
+    .pure-u-pl-10-24 {
+        width: 41.6667%;
+        *width: 41.6357%;
+    }
+
+    .pure-u-pl-11-24 {
+        width: 45.8333%;
+        *width: 45.8023%;
+    }
+
+    .pure-u-pl-1-2,
+    .pure-u-pl-12-24 {
+        width: 50%;
+        *width: 49.9690%;
+    }
+
+    .pure-u-pl-13-24 {
+        width: 54.1667%;
+        *width: 54.1357%;
+    }
+
+    .pure-u-pl-7-12,
+    .pure-u-pl-14-24 {
+        width: 58.3333%;
+        *width: 58.3023%;
+    }
+
+    .pure-u-pl-3-5 {
+        width: 60%;
+        *width: 59.9690%;
+    }
+
+    .pure-u-pl-5-8,
+    .pure-u-pl-15-24 {
+        width: 62.5000%;
+        *width: 62.4690%;
+    }
+
+    .pure-u-pl-2-3,
+    .pure-u-pl-16-24 {
+        width: 66.6667%;
+        *width: 66.6357%;
+    }
+
+    .pure-u-pl-17-24 {
+        width: 70.8333%;
+        *width: 70.8023%;
+    }
+
+    .pure-u-pl-3-4,
+    .pure-u-pl-18-24 {
+        width: 75%;
+        *width: 74.9690%;
+    }
+
+    .pure-u-pl-19-24 {
+        width: 79.1667%;
+        *width: 79.1357%;
+    }
+
+    .pure-u-pl-4-5 {
+        width: 80%;
+        *width: 79.9690%;
+    }
+
+    .pure-u-pl-5-6,
+    .pure-u-pl-20-24 {
+        width: 83.3333%;
+        *width: 83.3023%;
+    }
+
+    .pure-u-pl-7-8,
+    .pure-u-pl-21-24 {
+        width: 87.5000%;
+        *width: 87.4690%;
+    }
+
+    .pure-u-pl-11-12,
+    .pure-u-pl-22-24 {
+        width: 91.6667%;
+        *width: 91.6357%;
+    }
+
+    .pure-u-pl-23-24 {
+        width: 95.8333%;
+        *width: 95.8023%;
+    }
+
+    .pure-u-pl-1,
+    .pure-u-pl-1-1,
+    .pure-u-pl-5-5,
+    .pure-u-pl-24-24 {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: $bp-tablet-s) {
+    .pure-u-ts-1,
+    .pure-u-ts-1-1,
+    .pure-u-ts-1-2,
+    .pure-u-ts-1-3,
+    .pure-u-ts-2-3,
+    .pure-u-ts-1-4,
+    .pure-u-ts-3-4,
+    .pure-u-ts-1-5,
+    .pure-u-ts-2-5,
+    .pure-u-ts-3-5,
+    .pure-u-ts-4-5,
+    .pure-u-ts-5-5,
+    .pure-u-ts-1-6,
+    .pure-u-ts-5-6,
+    .pure-u-ts-1-8,
+    .pure-u-ts-3-8,
+    .pure-u-ts-5-8,
+    .pure-u-ts-7-8,
+    .pure-u-ts-1-12,
+    .pure-u-ts-5-12,
+    .pure-u-ts-7-12,
+    .pure-u-ts-11-12,
+    .pure-u-ts-1-24,
+    .pure-u-ts-2-24,
+    .pure-u-ts-3-24,
+    .pure-u-ts-4-24,
+    .pure-u-ts-5-24,
+    .pure-u-ts-6-24,
+    .pure-u-ts-7-24,
+    .pure-u-ts-8-24,
+    .pure-u-ts-9-24,
+    .pure-u-ts-10-24,
+    .pure-u-ts-11-24,
+    .pure-u-ts-12-24,
+    .pure-u-ts-13-24,
+    .pure-u-ts-14-24,
+    .pure-u-ts-15-24,
+    .pure-u-ts-16-24,
+    .pure-u-ts-17-24,
+    .pure-u-ts-18-24,
+    .pure-u-ts-19-24,
+    .pure-u-ts-20-24,
+    .pure-u-ts-21-24,
+    .pure-u-ts-22-24,
+    .pure-u-ts-23-24,
+    .pure-u-ts-24-24 {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        letter-spacing: normal;
+        word-spacing: normal;
+        vertical-align: top;
+        text-rendering: auto;
+    }
+
+    .pure-u-ts-1-24 {
+        width: 4.1667%;
+        *width: 4.1357%;
+    }
+
+    .pure-u-ts-1-12,
+    .pure-u-ts-2-24 {
+        width: 8.3333%;
+        *width: 8.3023%;
+    }
+
+    .pure-u-ts-1-8,
+    .pure-u-ts-3-24 {
+        width: 12.5000%;
+        *width: 12.4690%;
+    }
+
+    .pure-u-ts-1-6,
+    .pure-u-ts-4-24 {
+        width: 16.6667%;
+        *width: 16.6357%;
+    }
+
+    .pure-u-ts-1-5 {
+        width: 20%;
+        *width: 19.9690%;
+    }
+
+    .pure-u-ts-5-24 {
+        width: 20.8333%;
+        *width: 20.8023%;
+    }
+
+    .pure-u-ts-1-4,
+    .pure-u-ts-6-24 {
+        width: 25%;
+        *width: 24.9690%;
+    }
+
+    .pure-u-ts-7-24 {
+        width: 29.1667%;
+        *width: 29.1357%;
+    }
+
+    .pure-u-ts-1-3,
+    .pure-u-ts-8-24 {
+        width: 33.3333%;
+        *width: 33.3023%;
+    }
+
+    .pure-u-ts-3-8,
+    .pure-u-ts-9-24 {
+        width: 37.5000%;
+        *width: 37.4690%;
+    }
+
+    .pure-u-ts-2-5 {
+        width: 40%;
+        *width: 39.9690%;
+    }
+
+    .pure-u-ts-5-12,
+    .pure-u-ts-10-24 {
+        width: 41.6667%;
+        *width: 41.6357%;
+    }
+
+    .pure-u-ts-11-24 {
+        width: 45.8333%;
+        *width: 45.8023%;
+    }
+
+    .pure-u-ts-1-2,
+    .pure-u-ts-12-24 {
+        width: 50%;
+        *width: 49.9690%;
+    }
+
+    .pure-u-ts-13-24 {
+        width: 54.1667%;
+        *width: 54.1357%;
+    }
+
+    .pure-u-ts-7-12,
+    .pure-u-ts-14-24 {
+        width: 58.3333%;
+        *width: 58.3023%;
+    }
+
+    .pure-u-ts-3-5 {
+        width: 60%;
+        *width: 59.9690%;
+    }
+
+    .pure-u-ts-5-8,
+    .pure-u-ts-15-24 {
+        width: 62.5000%;
+        *width: 62.4690%;
+    }
+
+    .pure-u-ts-2-3,
+    .pure-u-ts-16-24 {
+        width: 66.6667%;
+        *width: 66.6357%;
+    }
+
+    .pure-u-ts-17-24 {
+        width: 70.8333%;
+        *width: 70.8023%;
+    }
+
+    .pure-u-ts-3-4,
+    .pure-u-ts-18-24 {
+        width: 75%;
+        *width: 74.9690%;
+    }
+
+    .pure-u-ts-19-24 {
+        width: 79.1667%;
+        *width: 79.1357%;
+    }
+
+    .pure-u-ts-4-5 {
+        width: 80%;
+        *width: 79.9690%;
+    }
+
+    .pure-u-ts-5-6,
+    .pure-u-ts-20-24 {
+        width: 83.3333%;
+        *width: 83.3023%;
+    }
+
+    .pure-u-ts-7-8,
+    .pure-u-ts-21-24 {
+        width: 87.5000%;
+        *width: 87.4690%;
+    }
+
+    .pure-u-ts-11-12,
+    .pure-u-ts-22-24 {
+        width: 91.6667%;
+        *width: 91.6357%;
+    }
+
+    .pure-u-ts-23-24 {
+        width: 95.8333%;
+        *width: 95.8023%;
+    }
+
+    .pure-u-ts-1,
+    .pure-u-ts-1-1,
+    .pure-u-ts-5-5,
+    .pure-u-ts-24-24 {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: $bp-tablet-m) {
+    .pure-u-tm-1,
+    .pure-u-tm-1-1,
+    .pure-u-tm-1-2,
+    .pure-u-tm-1-3,
+    .pure-u-tm-2-3,
+    .pure-u-tm-1-4,
+    .pure-u-tm-3-4,
+    .pure-u-tm-1-5,
+    .pure-u-tm-2-5,
+    .pure-u-tm-3-5,
+    .pure-u-tm-4-5,
+    .pure-u-tm-5-5,
+    .pure-u-tm-1-6,
+    .pure-u-tm-5-6,
+    .pure-u-tm-1-8,
+    .pure-u-tm-3-8,
+    .pure-u-tm-5-8,
+    .pure-u-tm-7-8,
+    .pure-u-tm-1-12,
+    .pure-u-tm-5-12,
+    .pure-u-tm-7-12,
+    .pure-u-tm-11-12,
+    .pure-u-tm-1-24,
+    .pure-u-tm-2-24,
+    .pure-u-tm-3-24,
+    .pure-u-tm-4-24,
+    .pure-u-tm-5-24,
+    .pure-u-tm-6-24,
+    .pure-u-tm-7-24,
+    .pure-u-tm-8-24,
+    .pure-u-tm-9-24,
+    .pure-u-tm-10-24,
+    .pure-u-tm-11-24,
+    .pure-u-tm-12-24,
+    .pure-u-tm-13-24,
+    .pure-u-tm-14-24,
+    .pure-u-tm-15-24,
+    .pure-u-tm-16-24,
+    .pure-u-tm-17-24,
+    .pure-u-tm-18-24,
+    .pure-u-tm-19-24,
+    .pure-u-tm-20-24,
+    .pure-u-tm-21-24,
+    .pure-u-tm-22-24,
+    .pure-u-tm-23-24,
+    .pure-u-tm-24-24 {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        letter-spacing: normal;
+        word-spacing: normal;
+        vertical-align: top;
+        text-rendering: auto;
+    }
+
+    .pure-u-tm-1-24 {
+        width: 4.1667%;
+        *width: 4.1357%;
+    }
+
+    .pure-u-tm-1-12,
+    .pure-u-tm-2-24 {
+        width: 8.3333%;
+        *width: 8.3023%;
+    }
+
+    .pure-u-tm-1-8,
+    .pure-u-tm-3-24 {
+        width: 12.5000%;
+        *width: 12.4690%;
+    }
+
+    .pure-u-tm-1-6,
+    .pure-u-tm-4-24 {
+        width: 16.6667%;
+        *width: 16.6357%;
+    }
+
+    .pure-u-tm-1-5 {
+        width: 20%;
+        *width: 19.9690%;
+    }
+
+    .pure-u-tm-5-24 {
+        width: 20.8333%;
+        *width: 20.8023%;
+    }
+
+    .pure-u-tm-1-4,
+    .pure-u-tm-6-24 {
+        width: 25%;
+        *width: 24.9690%;
+    }
+
+    .pure-u-tm-7-24 {
+        width: 29.1667%;
+        *width: 29.1357%;
+    }
+
+    .pure-u-tm-1-3,
+    .pure-u-tm-8-24 {
+        width: 33.3333%;
+        *width: 33.3023%;
+    }
+
+    .pure-u-tm-3-8,
+    .pure-u-tm-9-24 {
+        width: 37.5000%;
+        *width: 37.4690%;
+    }
+
+    .pure-u-tm-2-5 {
+        width: 40%;
+        *width: 39.9690%;
+    }
+
+    .pure-u-tm-5-12,
+    .pure-u-tm-10-24 {
+        width: 41.6667%;
+        *width: 41.6357%;
+    }
+
+    .pure-u-tm-11-24 {
+        width: 45.8333%;
+        *width: 45.8023%;
+    }
+
+    .pure-u-tm-1-2,
+    .pure-u-tm-12-24 {
+        width: 50%;
+        *width: 49.9690%;
+    }
+
+    .pure-u-tm-13-24 {
+        width: 54.1667%;
+        *width: 54.1357%;
+    }
+
+    .pure-u-tm-7-12,
+    .pure-u-tm-14-24 {
+        width: 58.3333%;
+        *width: 58.3023%;
+    }
+
+    .pure-u-tm-3-5 {
+        width: 60%;
+        *width: 59.9690%;
+    }
+
+    .pure-u-tm-5-8,
+    .pure-u-tm-15-24 {
+        width: 62.5000%;
+        *width: 62.4690%;
+    }
+
+    .pure-u-tm-2-3,
+    .pure-u-tm-16-24 {
+        width: 66.6667%;
+        *width: 66.6357%;
+    }
+
+    .pure-u-tm-17-24 {
+        width: 70.8333%;
+        *width: 70.8023%;
+    }
+
+    .pure-u-tm-3-4,
+    .pure-u-tm-18-24 {
+        width: 75%;
+        *width: 74.9690%;
+    }
+
+    .pure-u-tm-19-24 {
+        width: 79.1667%;
+        *width: 79.1357%;
+    }
+
+    .pure-u-tm-4-5 {
+        width: 80%;
+        *width: 79.9690%;
+    }
+
+    .pure-u-tm-5-6,
+    .pure-u-tm-20-24 {
+        width: 83.3333%;
+        *width: 83.3023%;
+    }
+
+    .pure-u-tm-7-8,
+    .pure-u-tm-21-24 {
+        width: 87.5000%;
+        *width: 87.4690%;
+    }
+
+    .pure-u-tm-11-12,
+    .pure-u-tm-22-24 {
+        width: 91.6667%;
+        *width: 91.6357%;
+    }
+
+    .pure-u-tm-23-24 {
+        width: 95.8333%;
+        *width: 95.8023%;
+    }
+
+    .pure-u-tm-1,
+    .pure-u-tm-1-1,
+    .pure-u-tm-5-5,
+    .pure-u-tm-24-24 {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: $bp-tablet) {
+    .pure-u-t-1,
+    .pure-u-t-1-1,
+    .pure-u-t-1-2,
+    .pure-u-t-1-3,
+    .pure-u-t-2-3,
+    .pure-u-t-1-4,
+    .pure-u-t-3-4,
+    .pure-u-t-1-5,
+    .pure-u-t-2-5,
+    .pure-u-t-3-5,
+    .pure-u-t-4-5,
+    .pure-u-t-5-5,
+    .pure-u-t-1-6,
+    .pure-u-t-5-6,
+    .pure-u-t-1-8,
+    .pure-u-t-3-8,
+    .pure-u-t-5-8,
+    .pure-u-t-7-8,
+    .pure-u-t-1-12,
+    .pure-u-t-5-12,
+    .pure-u-t-7-12,
+    .pure-u-t-11-12,
+    .pure-u-t-1-24,
+    .pure-u-t-2-24,
+    .pure-u-t-3-24,
+    .pure-u-t-4-24,
+    .pure-u-t-5-24,
+    .pure-u-t-6-24,
+    .pure-u-t-7-24,
+    .pure-u-t-8-24,
+    .pure-u-t-9-24,
+    .pure-u-t-10-24,
+    .pure-u-t-11-24,
+    .pure-u-t-12-24,
+    .pure-u-t-13-24,
+    .pure-u-t-14-24,
+    .pure-u-t-15-24,
+    .pure-u-t-16-24,
+    .pure-u-t-17-24,
+    .pure-u-t-18-24,
+    .pure-u-t-19-24,
+    .pure-u-t-20-24,
+    .pure-u-t-21-24,
+    .pure-u-t-22-24,
+    .pure-u-t-23-24,
+    .pure-u-t-24-24 {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        letter-spacing: normal;
+        word-spacing: normal;
+        vertical-align: top;
+        text-rendering: auto;
+    }
+
+    .pure-u-t-1-24 {
+        width: 4.1667%;
+        *width: 4.1357%;
+    }
+
+    .pure-u-t-1-12,
+    .pure-u-t-2-24 {
+        width: 8.3333%;
+        *width: 8.3023%;
+    }
+
+    .pure-u-t-1-8,
+    .pure-u-t-3-24 {
+        width: 12.5000%;
+        *width: 12.4690%;
+    }
+
+    .pure-u-t-1-6,
+    .pure-u-t-4-24 {
+        width: 16.6667%;
+        *width: 16.6357%;
+    }
+
+    .pure-u-t-1-5 {
+        width: 20%;
+        *width: 19.9690%;
+    }
+
+    .pure-u-t-5-24 {
+        width: 20.8333%;
+        *width: 20.8023%;
+    }
+
+    .pure-u-t-1-4,
+    .pure-u-t-6-24 {
+        width: 25%;
+        *width: 24.9690%;
+    }
+
+    .pure-u-t-7-24 {
+        width: 29.1667%;
+        *width: 29.1357%;
+    }
+
+    .pure-u-t-1-3,
+    .pure-u-t-8-24 {
+        width: 33.3333%;
+        *width: 33.3023%;
+    }
+
+    .pure-u-t-3-8,
+    .pure-u-t-9-24 {
+        width: 37.5000%;
+        *width: 37.4690%;
+    }
+
+    .pure-u-t-2-5 {
+        width: 40%;
+        *width: 39.9690%;
+    }
+
+    .pure-u-t-5-12,
+    .pure-u-t-10-24 {
+        width: 41.6667%;
+        *width: 41.6357%;
+    }
+
+    .pure-u-t-11-24 {
+        width: 45.8333%;
+        *width: 45.8023%;
+    }
+
+    .pure-u-t-1-2,
+    .pure-u-t-12-24 {
+        width: 50%;
+        *width: 49.9690%;
+    }
+
+    .pure-u-t-13-24 {
+        width: 54.1667%;
+        *width: 54.1357%;
+    }
+
+    .pure-u-t-7-12,
+    .pure-u-t-14-24 {
+        width: 58.3333%;
+        *width: 58.3023%;
+    }
+
+    .pure-u-t-3-5 {
+        width: 60%;
+        *width: 59.9690%;
+    }
+
+    .pure-u-t-5-8,
+    .pure-u-t-15-24 {
+        width: 62.5000%;
+        *width: 62.4690%;
+    }
+
+    .pure-u-t-2-3,
+    .pure-u-t-16-24 {
+        width: 66.6667%;
+        *width: 66.6357%;
+    }
+
+    .pure-u-t-17-24 {
+        width: 70.8333%;
+        *width: 70.8023%;
+    }
+
+    .pure-u-t-3-4,
+    .pure-u-t-18-24 {
+        width: 75%;
+        *width: 74.9690%;
+    }
+
+    .pure-u-t-19-24 {
+        width: 79.1667%;
+        *width: 79.1357%;
+    }
+
+    .pure-u-t-4-5 {
+        width: 80%;
+        *width: 79.9690%;
+    }
+
+    .pure-u-t-5-6,
+    .pure-u-t-20-24 {
+        width: 83.3333%;
+        *width: 83.3023%;
+    }
+
+    .pure-u-t-7-8,
+    .pure-u-t-21-24 {
+        width: 87.5000%;
+        *width: 87.4690%;
+    }
+
+    .pure-u-t-11-12,
+    .pure-u-t-22-24 {
+        width: 91.6667%;
+        *width: 91.6357%;
+    }
+
+    .pure-u-t-23-24 {
+        width: 95.8333%;
+        *width: 95.8023%;
+    }
+
+    .pure-u-t-1,
+    .pure-u-t-1-1,
+    .pure-u-t-5-5,
+    .pure-u-t-24-24 {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: $bp-tablet-l) {
+    .pure-u-tl-1,
+    .pure-u-tl-1-1,
+    .pure-u-tl-1-2,
+    .pure-u-tl-1-3,
+    .pure-u-tl-2-3,
+    .pure-u-tl-1-4,
+    .pure-u-tl-3-4,
+    .pure-u-tl-1-5,
+    .pure-u-tl-2-5,
+    .pure-u-tl-3-5,
+    .pure-u-tl-4-5,
+    .pure-u-tl-5-5,
+    .pure-u-tl-1-6,
+    .pure-u-tl-5-6,
+    .pure-u-tl-1-8,
+    .pure-u-tl-3-8,
+    .pure-u-tl-5-8,
+    .pure-u-tl-7-8,
+    .pure-u-tl-1-12,
+    .pure-u-tl-5-12,
+    .pure-u-tl-7-12,
+    .pure-u-tl-11-12,
+    .pure-u-tl-1-24,
+    .pure-u-tl-2-24,
+    .pure-u-tl-3-24,
+    .pure-u-tl-4-24,
+    .pure-u-tl-5-24,
+    .pure-u-tl-6-24,
+    .pure-u-tl-7-24,
+    .pure-u-tl-8-24,
+    .pure-u-tl-9-24,
+    .pure-u-tl-10-24,
+    .pure-u-tl-11-24,
+    .pure-u-tl-12-24,
+    .pure-u-tl-13-24,
+    .pure-u-tl-14-24,
+    .pure-u-tl-15-24,
+    .pure-u-tl-16-24,
+    .pure-u-tl-17-24,
+    .pure-u-tl-18-24,
+    .pure-u-tl-19-24,
+    .pure-u-tl-20-24,
+    .pure-u-tl-21-24,
+    .pure-u-tl-22-24,
+    .pure-u-tl-23-24,
+    .pure-u-tl-24-24 {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        letter-spacing: normal;
+        word-spacing: normal;
+        vertical-align: top;
+        text-rendering: auto;
+    }
+
+    .pure-u-tl-1-24 {
+        width: 4.1667%;
+        *width: 4.1357%;
+    }
+
+    .pure-u-tl-1-12,
+    .pure-u-tl-2-24 {
+        width: 8.3333%;
+        *width: 8.3023%;
+    }
+
+    .pure-u-tl-1-8,
+    .pure-u-tl-3-24 {
+        width: 12.5000%;
+        *width: 12.4690%;
+    }
+
+    .pure-u-tl-1-6,
+    .pure-u-tl-4-24 {
+        width: 16.6667%;
+        *width: 16.6357%;
+    }
+
+    .pure-u-tl-1-5 {
+        width: 20%;
+        *width: 19.9690%;
+    }
+
+    .pure-u-tl-5-24 {
+        width: 20.8333%;
+        *width: 20.8023%;
+    }
+
+    .pure-u-tl-1-4,
+    .pure-u-tl-6-24 {
+        width: 25%;
+        *width: 24.9690%;
+    }
+
+    .pure-u-tl-7-24 {
+        width: 29.1667%;
+        *width: 29.1357%;
+    }
+
+    .pure-u-tl-1-3,
+    .pure-u-tl-8-24 {
+        width: 33.3333%;
+        *width: 33.3023%;
+    }
+
+    .pure-u-tl-3-8,
+    .pure-u-tl-9-24 {
+        width: 37.5000%;
+        *width: 37.4690%;
+    }
+
+    .pure-u-tl-2-5 {
+        width: 40%;
+        *width: 39.9690%;
+    }
+
+    .pure-u-tl-5-12,
+    .pure-u-tl-10-24 {
+        width: 41.6667%;
+        *width: 41.6357%;
+    }
+
+    .pure-u-tl-11-24 {
+        width: 45.8333%;
+        *width: 45.8023%;
+    }
+
+    .pure-u-tl-1-2,
+    .pure-u-tl-12-24 {
+        width: 50%;
+        *width: 49.9690%;
+    }
+
+    .pure-u-tl-13-24 {
+        width: 54.1667%;
+        *width: 54.1357%;
+    }
+
+    .pure-u-tl-7-12,
+    .pure-u-tl-14-24 {
+        width: 58.3333%;
+        *width: 58.3023%;
+    }
+
+    .pure-u-tl-3-5 {
+        width: 60%;
+        *width: 59.9690%;
+    }
+
+    .pure-u-tl-5-8,
+    .pure-u-tl-15-24 {
+        width: 62.5000%;
+        *width: 62.4690%;
+    }
+
+    .pure-u-tl-2-3,
+    .pure-u-tl-16-24 {
+        width: 66.6667%;
+        *width: 66.6357%;
+    }
+
+    .pure-u-tl-17-24 {
+        width: 70.8333%;
+        *width: 70.8023%;
+    }
+
+    .pure-u-tl-3-4,
+    .pure-u-tl-18-24 {
+        width: 75%;
+        *width: 74.9690%;
+    }
+
+    .pure-u-tl-19-24 {
+        width: 79.1667%;
+        *width: 79.1357%;
+    }
+
+    .pure-u-tl-4-5 {
+        width: 80%;
+        *width: 79.9690%;
+    }
+
+    .pure-u-tl-5-6,
+    .pure-u-tl-20-24 {
+        width: 83.3333%;
+        *width: 83.3023%;
+    }
+
+    .pure-u-tl-7-8,
+    .pure-u-tl-21-24 {
+        width: 87.5000%;
+        *width: 87.4690%;
+    }
+
+    .pure-u-tl-11-12,
+    .pure-u-tl-22-24 {
+        width: 91.6667%;
+        *width: 91.6357%;
+    }
+
+    .pure-u-tl-23-24 {
+        width: 95.8333%;
+        *width: 95.8023%;
+    }
+
+    .pure-u-tl-1,
+    .pure-u-tl-1-1,
+    .pure-u-tl-5-5,
+    .pure-u-tl-24-24 {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: $bp-tablet-xl) {
+    .pure-u-txl-1,
+    .pure-u-txl-1-1,
+    .pure-u-txl-1-2,
+    .pure-u-txl-1-3,
+    .pure-u-txl-2-3,
+    .pure-u-txl-1-4,
+    .pure-u-txl-3-4,
+    .pure-u-txl-1-5,
+    .pure-u-txl-2-5,
+    .pure-u-txl-3-5,
+    .pure-u-txl-4-5,
+    .pure-u-txl-5-5,
+    .pure-u-txl-1-6,
+    .pure-u-txl-5-6,
+    .pure-u-txl-1-8,
+    .pure-u-txl-3-8,
+    .pure-u-txl-5-8,
+    .pure-u-txl-7-8,
+    .pure-u-txl-1-12,
+    .pure-u-txl-5-12,
+    .pure-u-txl-7-12,
+    .pure-u-txl-11-12,
+    .pure-u-txl-1-24,
+    .pure-u-txl-2-24,
+    .pure-u-txl-3-24,
+    .pure-u-txl-4-24,
+    .pure-u-txl-5-24,
+    .pure-u-txl-6-24,
+    .pure-u-txl-7-24,
+    .pure-u-txl-8-24,
+    .pure-u-txl-9-24,
+    .pure-u-txl-10-24,
+    .pure-u-txl-11-24,
+    .pure-u-txl-12-24,
+    .pure-u-txl-13-24,
+    .pure-u-txl-14-24,
+    .pure-u-txl-15-24,
+    .pure-u-txl-16-24,
+    .pure-u-txl-17-24,
+    .pure-u-txl-18-24,
+    .pure-u-txl-19-24,
+    .pure-u-txl-20-24,
+    .pure-u-txl-21-24,
+    .pure-u-txl-22-24,
+    .pure-u-txl-23-24,
+    .pure-u-txl-24-24 {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        letter-spacing: normal;
+        word-spacing: normal;
+        vertical-align: top;
+        text-rendering: auto;
+    }
+
+    .pure-u-txl-1-24 {
+        width: 4.1667%;
+        *width: 4.1357%;
+    }
+
+    .pure-u-txl-1-12,
+    .pure-u-txl-2-24 {
+        width: 8.3333%;
+        *width: 8.3023%;
+    }
+
+    .pure-u-txl-1-8,
+    .pure-u-txl-3-24 {
+        width: 12.5000%;
+        *width: 12.4690%;
+    }
+
+    .pure-u-txl-1-6,
+    .pure-u-txl-4-24 {
+        width: 16.6667%;
+        *width: 16.6357%;
+    }
+
+    .pure-u-txl-1-5 {
+        width: 20%;
+        *width: 19.9690%;
+    }
+
+    .pure-u-txl-5-24 {
+        width: 20.8333%;
+        *width: 20.8023%;
+    }
+
+    .pure-u-txl-1-4,
+    .pure-u-txl-6-24 {
+        width: 25%;
+        *width: 24.9690%;
+    }
+
+    .pure-u-txl-7-24 {
+        width: 29.1667%;
+        *width: 29.1357%;
+    }
+
+    .pure-u-txl-1-3,
+    .pure-u-txl-8-24 {
+        width: 33.3333%;
+        *width: 33.3023%;
+    }
+
+    .pure-u-txl-3-8,
+    .pure-u-txl-9-24 {
+        width: 37.5000%;
+        *width: 37.4690%;
+    }
+
+    .pure-u-txl-2-5 {
+        width: 40%;
+        *width: 39.9690%;
+    }
+
+    .pure-u-txl-5-12,
+    .pure-u-txl-10-24 {
+        width: 41.6667%;
+        *width: 41.6357%;
+    }
+
+    .pure-u-txl-11-24 {
+        width: 45.8333%;
+        *width: 45.8023%;
+    }
+
+    .pure-u-txl-1-2,
+    .pure-u-txl-12-24 {
+        width: 50%;
+        *width: 49.9690%;
+    }
+
+    .pure-u-txl-13-24 {
+        width: 54.1667%;
+        *width: 54.1357%;
+    }
+
+    .pure-u-txl-7-12,
+    .pure-u-txl-14-24 {
+        width: 58.3333%;
+        *width: 58.3023%;
+    }
+
+    .pure-u-txl-3-5 {
+        width: 60%;
+        *width: 59.9690%;
+    }
+
+    .pure-u-txl-5-8,
+    .pure-u-txl-15-24 {
+        width: 62.5000%;
+        *width: 62.4690%;
+    }
+
+    .pure-u-txl-2-3,
+    .pure-u-txl-16-24 {
+        width: 66.6667%;
+        *width: 66.6357%;
+    }
+
+    .pure-u-txl-17-24 {
+        width: 70.8333%;
+        *width: 70.8023%;
+    }
+
+    .pure-u-txl-3-4,
+    .pure-u-txl-18-24 {
+        width: 75%;
+        *width: 74.9690%;
+    }
+
+    .pure-u-txl-19-24 {
+        width: 79.1667%;
+        *width: 79.1357%;
+    }
+
+    .pure-u-txl-4-5 {
+        width: 80%;
+        *width: 79.9690%;
+    }
+
+    .pure-u-txl-5-6,
+    .pure-u-txl-20-24 {
+        width: 83.3333%;
+        *width: 83.3023%;
+    }
+
+    .pure-u-txl-7-8,
+    .pure-u-txl-21-24 {
+        width: 87.5000%;
+        *width: 87.4690%;
+    }
+
+    .pure-u-txl-11-12,
+    .pure-u-txl-22-24 {
+        width: 91.6667%;
+        *width: 91.6357%;
+    }
+
+    .pure-u-txl-23-24 {
+        width: 95.8333%;
+        *width: 95.8023%;
+    }
+
+    .pure-u-txl-1,
+    .pure-u-txl-1-1,
+    .pure-u-txl-5-5,
+    .pure-u-txl-24-24 {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: $bp-laptop-s) {
+    .pure-u-ls-1,
+    .pure-u-ls-1-1,
+    .pure-u-ls-1-2,
+    .pure-u-ls-1-3,
+    .pure-u-ls-2-3,
+    .pure-u-ls-1-4,
+    .pure-u-ls-3-4,
+    .pure-u-ls-1-5,
+    .pure-u-ls-2-5,
+    .pure-u-ls-3-5,
+    .pure-u-ls-4-5,
+    .pure-u-ls-5-5,
+    .pure-u-ls-1-6,
+    .pure-u-ls-5-6,
+    .pure-u-ls-1-8,
+    .pure-u-ls-3-8,
+    .pure-u-ls-5-8,
+    .pure-u-ls-7-8,
+    .pure-u-ls-1-12,
+    .pure-u-ls-5-12,
+    .pure-u-ls-7-12,
+    .pure-u-ls-11-12,
+    .pure-u-ls-1-24,
+    .pure-u-ls-2-24,
+    .pure-u-ls-3-24,
+    .pure-u-ls-4-24,
+    .pure-u-ls-5-24,
+    .pure-u-ls-6-24,
+    .pure-u-ls-7-24,
+    .pure-u-ls-8-24,
+    .pure-u-ls-9-24,
+    .pure-u-ls-10-24,
+    .pure-u-ls-11-24,
+    .pure-u-ls-12-24,
+    .pure-u-ls-13-24,
+    .pure-u-ls-14-24,
+    .pure-u-ls-15-24,
+    .pure-u-ls-16-24,
+    .pure-u-ls-17-24,
+    .pure-u-ls-18-24,
+    .pure-u-ls-19-24,
+    .pure-u-ls-20-24,
+    .pure-u-ls-21-24,
+    .pure-u-ls-22-24,
+    .pure-u-ls-23-24,
+    .pure-u-ls-24-24 {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        letter-spacing: normal;
+        word-spacing: normal;
+        vertical-align: top;
+        text-rendering: auto;
+    }
+
+    .pure-u-ls-1-24 {
+        width: 4.1667%;
+        *width: 4.1357%;
+    }
+
+    .pure-u-ls-1-12,
+    .pure-u-ls-2-24 {
+        width: 8.3333%;
+        *width: 8.3023%;
+    }
+
+    .pure-u-ls-1-8,
+    .pure-u-ls-3-24 {
+        width: 12.5000%;
+        *width: 12.4690%;
+    }
+
+    .pure-u-ls-1-6,
+    .pure-u-ls-4-24 {
+        width: 16.6667%;
+        *width: 16.6357%;
+    }
+
+    .pure-u-ls-1-5 {
+        width: 20%;
+        *width: 19.9690%;
+    }
+
+    .pure-u-ls-5-24 {
+        width: 20.8333%;
+        *width: 20.8023%;
+    }
+
+    .pure-u-ls-1-4,
+    .pure-u-ls-6-24 {
+        width: 25%;
+        *width: 24.9690%;
+    }
+
+    .pure-u-ls-7-24 {
+        width: 29.1667%;
+        *width: 29.1357%;
+    }
+
+    .pure-u-ls-1-3,
+    .pure-u-ls-8-24 {
+        width: 33.3333%;
+        *width: 33.3023%;
+    }
+
+    .pure-u-ls-3-8,
+    .pure-u-ls-9-24 {
+        width: 37.5000%;
+        *width: 37.4690%;
+    }
+
+    .pure-u-ls-2-5 {
+        width: 40%;
+        *width: 39.9690%;
+    }
+
+    .pure-u-ls-5-12,
+    .pure-u-ls-10-24 {
+        width: 41.6667%;
+        *width: 41.6357%;
+    }
+
+    .pure-u-ls-11-24 {
+        width: 45.8333%;
+        *width: 45.8023%;
+    }
+
+    .pure-u-ls-1-2,
+    .pure-u-ls-12-24 {
+        width: 50%;
+        *width: 49.9690%;
+    }
+
+    .pure-u-ls-13-24 {
+        width: 54.1667%;
+        *width: 54.1357%;
+    }
+
+    .pure-u-ls-7-12,
+    .pure-u-ls-14-24 {
+        width: 58.3333%;
+        *width: 58.3023%;
+    }
+
+    .pure-u-ls-3-5 {
+        width: 60%;
+        *width: 59.9690%;
+    }
+
+    .pure-u-ls-5-8,
+    .pure-u-ls-15-24 {
+        width: 62.5000%;
+        *width: 62.4690%;
+    }
+
+    .pure-u-ls-2-3,
+    .pure-u-ls-16-24 {
+        width: 66.6667%;
+        *width: 66.6357%;
+    }
+
+    .pure-u-ls-17-24 {
+        width: 70.8333%;
+        *width: 70.8023%;
+    }
+
+    .pure-u-ls-3-4,
+    .pure-u-ls-18-24 {
+        width: 75%;
+        *width: 74.9690%;
+    }
+
+    .pure-u-ls-19-24 {
+        width: 79.1667%;
+        *width: 79.1357%;
+    }
+
+    .pure-u-ls-4-5 {
+        width: 80%;
+        *width: 79.9690%;
+    }
+
+    .pure-u-ls-5-6,
+    .pure-u-ls-20-24 {
+        width: 83.3333%;
+        *width: 83.3023%;
+    }
+
+    .pure-u-ls-7-8,
+    .pure-u-ls-21-24 {
+        width: 87.5000%;
+        *width: 87.4690%;
+    }
+
+    .pure-u-ls-11-12,
+    .pure-u-ls-22-24 {
+        width: 91.6667%;
+        *width: 91.6357%;
+    }
+
+    .pure-u-ls-23-24 {
+        width: 95.8333%;
+        *width: 95.8023%;
+    }
+
+    .pure-u-ls-1,
+    .pure-u-ls-1-1,
+    .pure-u-ls-5-5,
+    .pure-u-ls-24-24 {
+        width: 100%;
+    }
+}

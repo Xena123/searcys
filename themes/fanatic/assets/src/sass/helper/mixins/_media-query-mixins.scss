@@ -1,0 +1,24 @@
+//-----------------------------------
+//	Media Query Mixins
+//-----------------------------------
+
+// Min-Width:
+@mixin mediaMin($minWidth) {
+  @media (min-width: $minWidth) {
+    @content;
+  }
+}
+// Max-Width:
+@mixin mediaMax($minWidth) {
+  $maxWidth: ($minWidth - 0.01px);
+  @media (max-width: $maxWidth) {
+    @content;
+  }
+}
+// Min Width & Max-Width:
+@mixin mediaBound($minWidth, $maxWidth) {
+  $max: ($maxWidth - 0.01px);
+  @media (min-width: $minWidth) and (max-width: $max) {
+    @content;
+  }
+}

@@ -1,0 +1,127 @@
+/*------------------------------------|
+|	Base                                |
+|------------------------------------*/
+
+body {
+  font-family: $font-alpha;
+  @include font-size($base-font-size);
+  font-weight: $normal;
+  overflow-x: hidden;
+  color: $colour-text-body;
+  background-color: $colour-body;
+  padding-top: 130px;
+  position: relative;
+  @include mediaMin($break-col-quarter-2) {
+    padding-top: 140px;
+  }
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  //@include box-sizing($box-model);
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  @include font-size(14, 17, 0);
+}
+
+span {
+}
+
+li {
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-alpha;
+}
+
+h1 {
+  font-size: 35px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+}
+
+h4 {
+}
+
+h5 {
+}
+
+h6 {
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: $bold;
+}
+
+u {
+  text-decoration: underline;
+}
+
+button,
+input {
+  padding: 5px;
+  //@include input-reset;
+}
+
+input {
+}
+
+button {
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+@font-face {
+  font-family: 'Bau';
+  //src: url('/searcys/wp-content/themes/fanatic/assets/fonts/Bau-Regular.woff') format('woff');
+  src: url('/wp-content/themes/fanatic/assets/fonts/Bau-Regular.woff') format('woff');
+  font-weight: normal;
+}
+
+.archive {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+      background: #888; 
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+  }
+}

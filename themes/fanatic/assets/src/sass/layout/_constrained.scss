@@ -1,0 +1,37 @@
+/*------------------------------------|
+|	Content Wrap                        |
+|------------------------------------*/
+
+/*---- Limits width of content, adds side padding, & allows background colours to extend to screen edge ----*/
+
+.l-constrained {
+  position: relative;
+  //max-width: $max_width;
+  margin: 0 auto;
+  padding-right: 2.5%;
+  padding-left: 2.5%;
+  @include mediaMin($max_width) {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+  @include mediaMin($bp-desktop) {
+    padding-right: 10%;
+    padding-left: 10%;
+  }
+}
+
+.l-constrained--grid {
+  padding-right: 2.5%;
+  padding-left: 2.5%;
+}
+.l-constrained--xtra {
+  @include mediaMin($bp-phone-l) {
+    padding: 30px 5%;
+  }
+  @include mediaMin($bp-nav) {
+    padding: 0;
+  }
+  @include mediaMin($bp-tablet-xl) {
+    padding: 0 10%;
+  }
+}

@@ -1,0 +1,150 @@
+/*------------------------------------|
+|	Forms                               |
+|------------------------------------*/
+
+// Sidebar Form
+.l-form {
+  padding: 0 13px;
+  .form__first-name,
+  .form__last-name,
+  .form__date,
+  .form__guests {
+    display: inline-block;
+    width: 47%;
+    @include mediaMax($bp-tablet-m) {
+      width: 48%;
+    }
+  }
+  .form__first-name,
+  .form__date {
+    margin-right: 2%;
+    @include mediaMin($bp-phone-l) {
+      margin-right: 3%;
+    }
+  }
+  .nf-field-container {
+    margin-bottom: 15px;
+  }
+  .nf-element {
+    width: 100%;
+    background-image: none !important;
+    border: 1px solid #ccc;
+    -webkit-appearance: none;
+    border-image: none;
+    @include mediaMin($bp-tablet-m) {
+      width: 98%;
+    }
+  }
+  input, select, textarea {
+    padding: 12px;
+    font-weight: 300;
+    font-family: $font-alpha;
+    &:focus {
+      outline: none;
+    }
+  }
+  ::placeholder {
+    font-weight: 300;
+  }
+  select {
+    appearance: none;
+    background-color: transparent;
+    border-radius: 0;
+  }
+  .nf-after-field .nf-error-msg {
+    position: absolute;
+    font-size: 10px;
+    bottom: -12px;
+  }
+  .form__submit {
+    width: 100%;
+    input {
+      width: 100% !important;
+      background-color: $brand-blue;
+      color: #fff;
+      text-transform: uppercase;
+      @include font-size(16,31,75);
+    }
+  }
+}
+
+.nf-response-msg {
+  text-align: center;
+  padding-top: 8%;
+  padding-bottom: 8%;
+  border: 1px solid #eee;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  @include mediaMin($bp-nav) {
+    padding-top: 15%;
+    padding-bottom: 15%;
+  }
+  p {
+    font-size: 16px;
+  }
+}
+.nf-form-fields-required {
+  display: none;
+}
+
+#__lpform_nf-field-1_icon {
+  display: none;
+}
+
+
+// Contact Form
+.form__field, .form__textarea {
+  label {
+    text-align: left;
+    color: $brand-blue;
+    @include font-size(16, 16, 50);
+  }
+  input, textarea {
+    border: 1px solid #ccc;
+    -webkit-appearance: none;
+    border-image: none;
+  }
+  .ninja-forms-req-symbol {
+    color: $brand-blue;
+  }
+}
+
+.form__submit {
+  width: 100%;
+  input {
+    width: 100% !important;
+    background-color: $brand-blue;
+    color: #fff;
+    text-transform: uppercase;
+    @include font-size(16,31,75);
+  }
+}
+
+.form__label {
+  text-align: left;
+  color: $brand-blue;
+  @include font-size(16, 16, 50);
+}
+
+.html-wrap {
+  color: #9b9a9a;
+  @include font-size(16, 19, 100);
+}
+
+// Job Form
+.l-form__job {
+  background-color: #f3f2f2;
+  padding: 30px;
+  margin-left: 15px;
+  h4 {
+    @include font-size(16, 19, 100);
+    text-transform: uppercase;
+    color: $brand-blue;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  .form__submit {
+    margin-bottom: 0;
+  }
+}

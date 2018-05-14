@@ -1,0 +1,174 @@
+//-----------------------------------
+//	Mixins
+//-----------------------------------
+
+
+
+//------ Triangles ------//
+//  Include triangle within a pseudo element and add positioning properties (ie. top, left)
+//    $direction: up, down, left, right
+//    $size: Width at base of triangle
+//    $height: Decimal (0-1). Proportion of height to $size
+//    $offset: Pixels, closer to (+) or further from (-) parent
+//    $color: Triangle color
+//  Usage: @include triange (up, 6px .5, 1, #c00);
+@mixin triangle($direction, $size: 6px, $height: 0.5, $offset: 1, $color: #222222) {
+  position: relative;
+  @if ($direction == "up") {
+    &:after {
+      position: absolute;
+      top: -$size + $offset;
+      right: 0;
+      left: 0;
+
+      display: block;
+
+      width: 0;
+      height: 0;
+      margin: 0 auto;
+
+      content: "";
+
+      border-right: $height*$size solid transparent;
+      border-bottom: $size solid $color;
+      border-left: $height*$size solid transparent;
+    }
+  }
+  @else if ($direction == "down") {
+    &:after {
+      position: absolute;
+      right: 0;
+      bottom: -$size + $offset;
+      left: 0;
+
+      display: block;
+
+      width: 0;
+      height: 0;
+      margin: 0 auto;
+
+      content: "";
+
+      border-top: $size solid $color;
+      border-right: $height*$size solid transparent;
+      border-left: $height*$size solid transparent;
+    }
+  }
+  @else if ($direction == "left") {
+    &:after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -$size + $offset;
+
+      display: block;
+
+      width: 0;
+      height: 0;
+      margin: auto;
+
+      content: "";
+
+      border-top: $height*$size solid transparent;
+      border-right: $size solid $color;
+      border-bottom: $height*$size solid transparent;
+    }
+  }
+  @else if ($direction == "right") {
+    &:after {
+      position: absolute;
+      top: 0;
+      right: -$size + $offset;
+      bottom: 0;
+
+      display: block;
+
+      width: 0;
+      height: 0;
+      margin: auto;
+
+      content: "";
+
+      border-top: $height*$size solid transparent;
+      border-bottom: $height*$size solid transparent;
+      border-left: $size solid $color;
+    }
+  }
+}
+
+
+//------ Youtube Video ------//
+// Expands video to full width & proportional height
+// Put on Container:
+@mixin youtube-parent($aspect-ratio: 16-9) {
+  @if ($aspect-ratio == "16-9") {
+    position: relative;
+
+    overflow: hidden;
+
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 56.25%; /* 16:9 */
+  } @else if ($aspect-ratio == "4-3") {
+    position: relative;
+
+    overflow: hidden;
+
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 75%; /* 4:3 */
+  }
+}
+// Put on Video Element:
+@mixin youtube-child() {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 101%;
+  height: 101%;
+}
+
+//------ Clearfix ------//
+// Usage: @include clearfix;
+@mixin clearfix {
+  &:after {
+    display: block;
+    visibility: hidden;
+    clear: both;
+
+    height: 0;
+
+    content: " ";
+  }
+}
+
+
+// Animation Mixin
+
+@mixin animate($animation, $duration, $repeat, $easing) {
+	-webkit-animation: $animation $duration $repeat $easing;
+	   -moz-animation: $animation $duration $repeat $easing;
+	    -ms-animation: $animation $duration $repeat $easing;
+	        animation: $animation $duration $repeat $easing;
+}
+
+
+
+// Keyframes Mixin
+// https://gist.github.com/ericam/1607696
+
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@-ms-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	}
+}

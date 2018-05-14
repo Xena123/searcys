@@ -1,0 +1,85 @@
+/*------------------------------------|
+|	Buttons                             |
+|------------------------------------*/
+
+
+// Module Styling
+.btn {
+  pointer: cursor;
+}
+
+.btn--general {
+  @include font-size(12, 12, 150);
+  font-weight: bold;
+  width: auto;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 30px;
+  text-transform: uppercase;
+}
+
+.btn--light {
+  @include font-size(12, 12, 150);
+  font-weight: bold;
+  text-align: center;
+  width: auto;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 30px;
+  color: $brand-blue;
+  background-color: #fff;
+  min-width: 100px;
+}
+
+.btn--dark {
+  @include font-size(12, 12, 150);
+  font-weight: bold;
+  text-align: center;
+  width: auto;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 30px;
+  color: #fff;
+  background-color: $brand-blue;
+  min-width: 100px;
+}
+
+.btn--banner {
+  color: #fff;
+  background-color: $brand-blue;
+  min-width: 100px;
+  text-transform: uppercase;
+}
+
+
+.btn--overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+.btn__btm {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.btn--job {
+  @include font-size(18, 18, 50);
+  text-align: center;
+  font-weight: bold;
+  width: auto;
+  color: #fff;
+  background-color: $brand-blue;
+  margin: auto;
+  display: block;
+  max-width: 200px;
+  padding: 20px 35px;
+}
+// Module States
+.btn.is-active {
+
+}

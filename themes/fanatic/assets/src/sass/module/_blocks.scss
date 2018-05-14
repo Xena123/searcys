@@ -1,0 +1,171 @@
+.block__bgd {
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100%;
+}
+
+.block {
+  padding: 10px;
+  @include mediaMin($break-col-quarter-2) {
+    padding: 20px;
+  }
+}
+
+// Positioning
+.block__overlay {
+  @include cover;
+  background: linear-gradient(rgba(0,0,0,0.5), transparent);
+  
+}
+
+.block__content {
+  @include cover;
+}
+
+.block__txtCenter {
+  @include center-element;
+  text-align: center;
+}
+
+.block__txtLeft {
+  position: absolute;
+  text-align: left;
+  top: 0;
+  left: 0;
+}
+
+.block__flexCol {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.block__flex {
+  display: flex;
+}
+
+// Block Variants
+.block__intro {
+  h1 span {
+    @include font-size(16, 16, 0);
+    text-transform: uppercase;
+    color: $brand-blue;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: block;
+    @include mediaMin($bp-tablet-xl) {
+      margin-bottom: 40px;
+    }
+  }
+  h1 {
+    @include font-size(22, 40, 100);
+    text-transform: uppercase;
+    color: $brand-blue;
+    font-weight: bold;
+    
+  }
+}
+
+.block__wysi {
+  text-align: left;
+
+  h1, h2, h3, h4 {
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $brand-blue;
+  }
+  h1 {
+    @include font-size(30, 30, 225);
+  }
+  h2 {
+    @include font-size(22, 30, 200);
+  }
+  h3 {
+    @include font-size(18, 18, 200);
+  }
+  p {
+    margin-bottom: 15px;
+    color: $grey;
+    @include font-size(16, 19, 100);
+  }
+  a {
+    color: $brand-blue;
+    text-decoration: underline;
+    @include font-size(16, 19, 100);
+  }
+  ul {
+    padding-left: 20px;
+    list-style-type: disc;
+  }
+  li {
+    color: $grey;
+    @include font-size(16, 19, 100);
+    margin-bottom: 10px;
+  }
+}
+
+.block__contact {
+  a {
+    color: $grey;
+    @include font-size(16, 19, 100);
+    text-decoration: none;
+  }
+  p {
+    margin-bottom: 15px;
+    color: $grey;
+    @include font-size(16, 19, 100);
+  }
+  li {
+    color: $grey;
+    @include font-size(16, 19, 100);
+    margin-bottom: 10px;
+  }
+
+}
+
+.block__blogList {
+  h2, p {
+    color: #fff;
+  }
+}
+
+.block__job-listing {
+  margin-bottom: 35px;
+  padding-bottom: 45px;
+  border-bottom: 1px solid $grey;
+}
+
+.block__job {
+  div {
+    margin-bottom: 30px;
+  }
+}
+
+
+// Heights
+.block__full {
+  height: 350px;
+}
+
+.block__half {
+  @include mediaMin($bp-tablet-xl) {
+    height: 175px;
+  }
+}
+
+.block__partial {
+  height: 310px;
+}
+
+.block__banner {
+  height: 500px;
+}
+
+// Widths
+
+.block__fifth {
+  width: 20%;
+}

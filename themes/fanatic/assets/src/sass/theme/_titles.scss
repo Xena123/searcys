@@ -1,0 +1,114 @@
+/*------------------------------------|
+|	Type - Titles                       |
+|------------------------------------*/
+
+.title--section {
+  @include font-size(18, 22, 225);
+  text-transform: uppercase;
+  text-align: center;
+  color: $brand-blue;
+  margin: 25px 0 30px;
+  font-weight: bold;
+  @include mediaMin($bp-phone-l) {
+    @include font-size(22, 22, 225);
+    margin: 30px 0 40px;
+  }
+}
+
+.title--feature {
+  @include font-size(17.5, 17.5, 200);
+  color: $brand-blue;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.title--listing {
+  @include font-size(16, 16, 0);
+  color: $brand-blue;
+  margin-bottom: 20px;
+  font-weight: bold;
+  li {
+    line-height: 2;
+  }
+  ul:last-child {
+    font-weight: normal;
+  }
+}
+
+.title--banner {
+  color: #fff;
+  text-transform: uppercase;
+  @include font-size(24, 24, 200);
+  @include mediaMin($bp-phone-l) {
+    @include font-size(30, 30, 225);
+  }
+}
+
+.title--block {
+  color: #fff;
+  text-transform: uppercase;
+  @include font-size(22, 30, 225);
+}
+
+.title--cta {
+  @include font-size(18, 30, 225);
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  @include mediaMin($bp-phone-l) {
+    @include font-size(22, 30, 225);
+  }
+}
+
+.title--sidebar {
+  @include font-size(22, 22, 225);
+  text-transform: uppercase;
+  text-align: center;
+  color: $brand-blue;
+  margin-bottom: 35px;
+  font-weight: bold;
+}
+
+.title--blog {
+  @include font-size(22, 22, 225);
+  text-transform: uppercase;
+  text-align: left;
+  color: $brand-blue;
+  margin-bottom: 35px;
+  font-weight: bold;
+}
+
+.title--contact {
+  @include font-size(22, 22, 225);
+  text-transform: uppercase;
+  text-align: left;
+  color: $brand-blue;
+  margin-bottom: 50px;
+  font-weight: bold;
+}
+
+.title--marker {
+  font-size: 16px;
+  color: $brand-blue;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.title--job {
+  @include font-size(22, 22, 225);
+  text-transform: uppercase;
+  text-align: left;
+  color: $brand-blue;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.subtitle--job {
+  @include font-size(16, 16, 0);
+  text-transform: uppercase;
+  color: $brand-blue;
+  margin-bottom: 20px;
+  font-weight: bold;
+}

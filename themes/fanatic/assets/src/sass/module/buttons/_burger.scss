@@ -1,0 +1,115 @@
+/*------------------------------------|
+| Burger                              |
+|------------------------------------*/
+
+// Button Variables
+$primaryColor: $brand-blue;      // Icon color
+
+/* Base Burger Settings */
+.burger {
+  //position: relative;
+  -webkit-touch-callout: none;
+  user-select: none;
+  cursor: pointer;
+  margin-bottom: -34px;
+  z-index: 9999;
+}
+
+.burger-sizing {
+  width: 34px;
+  height: 34px;
+}
+
+.burger__wrap {
+  position: absolute;
+}
+
+.burger__icon {
+  position: relative;
+  width: 34px;
+  height: 34px;
+}
+
+.burger-position {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Burger Buns */
+
+.burger__bun {
+  position: absolute;
+  display: block;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  background: $primaryColor;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+}
+
+.burger__bun-top {
+  top: 0;
+  transform-origin: 34px 2px;
+}
+
+.burger__bun-bot {
+  top: 22px;
+  transform-origin: 34px 2px;
+}
+
+.burger__filling {
+  top: 11px;
+}
+
+/* Burger Ring */
+
+.burger__ring{
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  stroke-linejoin: round;
+}
+
+/* Burger Animation */
+
+.burger__bun-top {
+  transform-origin: left center;
+}
+
+.burger__filling {
+  transform-origin: left center;
+}
+
+.burger__bun-bot {
+  transform-origin: left center;
+}
+
+.is-menu-open {
+  .burger__bun-top {
+    transform: rotate(45deg);
+    top: -3px;
+  }
+
+  .burger__filling {
+    width: 0%;
+    opacity: 0;
+  }
+
+  .burger__bun-bot {
+    transform: rotate(-45deg);
+    top: 21px;
+  }
+  .burger__wrap {
+    z-index: 999;
+  }
+  .burger__name {
+    opacity: 0;
+  }
+}
+
+.is-menu-open {
+  .burger__bun {
+    background: #fff;
+  }
+}
