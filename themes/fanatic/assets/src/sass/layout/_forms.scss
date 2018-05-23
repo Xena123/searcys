@@ -4,7 +4,7 @@
 
 // Sidebar Form
 .l-form {
-  padding: 0 13px;
+  padding: 0;
   .form__first-name,
   .form__last-name,
   .form__date,
@@ -140,7 +140,7 @@
     @include font-size(16, 19, 100);
     text-transform: uppercase;
     color: $brand-blue;
-    font-weight: bold;
+    font-weight: $bold;
     text-align: center;
     margin-bottom: 25px;
   }

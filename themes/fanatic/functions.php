@@ -22,7 +22,7 @@ if (!function_exists('fanatic_setup')) {
 }
 add_action('after_setup_theme', 'fanatic_setup');
 
-
+//Add image sizing for Image compression
 add_theme_support('post-thumbnails');
 
 add_image_size('home-slider', 1800, 500, true); // Homepage banner slider
@@ -34,6 +34,12 @@ add_image_size('grid-third', 500, 350, true);
 add_image_size('grid-quarter', 370, 350, true);
 
 add_image_size('listing-thumb', 350, 175, true); // Thumbnail on listing page
+
+//Change JPEG compression on site
+function my_prefix_regenerate_thumbnail_quality() {
+    return 100;
+}
+add_filter( 'jpeg_quality', 'my_prefix_regenerate_thumbnail_quality');
 
 /* Initialize widgets */
 // function fanatic_widgets_init() {
@@ -72,7 +78,7 @@ function fanatic_scripts()
 	wp_enqueue_style('font-awesome', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 	// Theme Scripts
 	wp_enqueue_script('slick-scripts', get_template_directory_uri() . '/assets/vendor/slick/slick.min.js', array('jquery'), false, true);
-	 wp_enqueue_script( 'turn-scripts', get_template_directory_uri().'/assets/vendor/select2/select2.min.js', array( 'jquery' ), '1.0' , true );
+	wp_enqueue_script('turn-scripts', get_template_directory_uri() . '/assets/vendor/select2/select2.min.js', array('jquery'), '1.0', true);
 	// wp_enqueue_script( 'isotope-scripts', get_template_directory_uri().'/assets/vendor/isotope/isotope.min.js', array( 'jquery' ), '1.0' , true );
 	wp_enqueue_script('theme-scripts', get_template_directory_uri() . '/assets/js/script.min.js?' . time(), array('jquery'), '1.0', false);
 }
@@ -88,29 +94,30 @@ add_action('wp_enqueue_scripts', 'fanatic_scripts');
  * Hide editor on specific pages.
  *
  */
-add_action( 'admin_head', 'hide_editor' );
+add_action('admin_head', 'hide_editor');
 
-function hide_editor() {
-  // Get the Post ID.
-  global $pagenow;
-  if( !( 'post.php' == $pagenow ) ) return;
+function hide_editor()
+{
+	// Get the Post ID.
+	global $pagenow;
+	if (!('post.php' == $pagenow)) return;
 
-  global $post;
-  // Get the Post ID.
-  $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
-  if( !isset( $post_id ) ) return;
-  // Hide the editor on the page titled 'Home Page'
-  $pageName = get_the_title($post_id);
-  if($pageName == 'Home Page'){
-    remove_post_type_support('page', 'editor');
-  }
-  // Hide the editor on all pages except ones using contact page template
-  // Get the name of the Page Template file.
-  $template_file = get_post_meta($post_id, '_wp_page_template', true);
+	global $post;
+	// Get the Post ID.
+	$post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'];
+	if (!isset($post_id)) return;
+	// Hide the editor on the page titled 'Home Page'
+	$pageName = get_the_title($post_id);
+	if ($pageName == 'Home Page') {
+		remove_post_type_support('page', 'editor');
+	}
+	// Hide the editor on all pages except ones using contact page template
+	// Get the name of the Page Template file.
+	$template_file = get_post_meta($post_id, '_wp_page_template', true);
 
-  if($template_file != 'page-templates/page-contact.php'){ // the filename of the page template
-    remove_post_type_support('page', 'editor');
-  }
+	if ($template_file != 'page-templates/page-contact.php') { // the filename of the page template
+		remove_post_type_support('page', 'editor');
+	}
 }
 
 
@@ -138,14 +145,14 @@ include get_template_directory() . '/acf-php-recovery.php';
  * Register custom fields Global Options
  */
 
-if( function_exists('acf_add_options_page') ) {
+if (function_exists('acf_add_options_page')) {
 
 	acf_add_options_page(array(
-		'page_title' 	=> 'Theme General Settings',
-		'menu_title'	=> 'Theme Settings',
-		'menu_slug' 	=> 'theme-general-settings',
-		'capability'	=> 'edit_posts',
-		'redirect'		=> false
+		'page_title' => 'Theme General Settings',
+		'menu_title' => 'Theme Settings',
+		'menu_slug' => 'theme-general-settings',
+		'capability' => 'edit_posts',
+		'redirect' => false
 	));
 
 }
@@ -162,29 +169,31 @@ function get_venues_list()
 	$args = array(
 		'post_type' => $type,
 		'post_status' => 'publish',
+		'meta_key' => 'venue_order_weight',
+		'orderby' => 'meta_value',
 		'post_parent' => 0,
 		'posts_per_page' => -1,
-		'ignore_sticky_posts'=> true
+		'ignore_sticky_posts' => true
 	);
 	$query = null;
 	$query = new WP_Query($args);
 
 
-	if( $query->have_posts() ):
+	if ($query->have_posts()):
 		?>
 		<label class="select" for="venuefilter"><i><?php the_field('venues_default_text', 'option'); ?></i>
 			<select class="venue-filter" name="venuefilter">
 				<option value="0"><?php the_field('venues_default_text', 'option'); ?></option>
-			<?php
-			while ($query->have_posts()) : $query->the_post();
-			?>
-				<option value="<?php the_permalink(); ?>"><?php echo the_title(); ?></option>
-			<?php
-			endwhile;
-			?>
+				<?php
+				while ($query->have_posts()) : $query->the_post();
+					?>
+					<option value="<?php the_permalink(); ?>"><?php echo the_title(); ?></option>
+				<?php
+				endwhile;
+				?>
 			</select>
 		</label>
-		<?php
+	<?php
 	endif;
 	wp_reset_query();
 
@@ -195,32 +204,50 @@ function get_restaurants_list()
 {
 
 	$type = 'venues';
+//	$args = array(
+//		'post_type' => $type,
+//		'post_status' => 'publish',
+//		'posts_per_page' => -1,
+//		'ignore_sticky_posts'=> true,
+//		'tax_query' => array(
+//			array (
+//				'taxonomy' => 'venue-event',
+//				'field' => 'slug',
+//				'terms' => 'restaurants',
+//			)
+//		),
+//	);
+
 	$args = array(
+		'numberposts' => -1,
 		'post_type' => $type,
-		'post_status' => 'publish',
-		'posts_per_page' => -1,
-		'ignore_sticky_posts'=> true,
-		'tax_query' => array(
-			array (
-				'taxonomy' => 'venue-event',
-				'field' => 'slug',
-				'terms' => 'restaurants',
+		'meta_key' => 'order_on_search_bar',
+		'orderby' => 'meta_value',
+		'meta_query' => array(
+			array(
+				'key' => 'display_on_search_bar',
+				'compare' => '==',
+				'value' => '1'
 			)
-		),
+		)
 	);
+
+
 	$query = null;
 	$query = new WP_Query($args);
 
-	if( $query->have_posts() ):
+	if ($query->have_posts()):
 		?>
 		<label class="select" for="restaurantfilter"><i><?php the_field('restaurants_default_text', 'option'); ?></i>
 			<select class="restaurant-filter" name="restaurantfilter">
 				<option value="0"><?php the_field('restaurants_default_text', 'option'); ?></option>
 				<?php
 				while ($query->have_posts()) : $query->the_post();
-					?>
-					<option value="<?php the_permalink(); ?>restaurant/"><?php echo the_title(); ?></option>
-				<?php
+					$title = get_field("title_on_search_bar");
+					if ($title) {
+						?>
+						<option value="<?php the_permalink(); ?>"><?php echo $title ?></option>
+					<?php }
 				endwhile;
 				?>
 			</select>
@@ -238,6 +265,7 @@ function get_event_types_list()
 	$taxonomy = 'venue-event';
 	$args = array(
 		'taxonomy' => $taxonomy,
+		'orderby' => 'ID',
 		'hide_empty' => false,
 	);
 
@@ -245,16 +273,16 @@ function get_event_types_list()
 	<label class="select" for="eventtypefilter"><i><?php the_field('event_spaces_default_text', 'option'); ?></i>
 		<select class="event-type-filter" name="eventtypefilter">
 			<option value="0"><?php the_field('event_spaces_default_text', 'option'); ?></option>
-		<?php
+			<?php
 
-		$custom_terms = get_terms($taxonomy, $args);
-		foreach($custom_terms as $term){
-			if ($term->slug !== 'restaurants') {
-				?>
-				<option value="<?php echo $term->slug; ?>"><?php echo $term->name; ?></option>
-				<?php
-			}
-		} ?>
+			$custom_terms = get_terms($taxonomy, $args);
+			foreach ($custom_terms as $term) {
+				if ($term->slug !== 'restaurants') {
+					?>
+					<option value="<?php echo $term->slug; ?>"><?php echo $term->name; ?></option>
+					<?php
+				}
+			} ?>
 		</select>
 	</label>
 	<?php
@@ -269,6 +297,7 @@ function get_event_location_list()
 	$taxonomy = 'venue-location';
 	$args = array(
 		'taxonomy' => $taxonomy,
+		'orderby' => 'ID',
 		'hide_empty' => false,
 	);
 
@@ -276,16 +305,18 @@ function get_event_location_list()
 	<label class="select" for="eventlocationfilter"><i><?php the_field('locations_default_text', 'option'); ?></i>
 		<select class="event-location-filter" name="eventlocationfilter">
 			<option value="0"><?php the_field('locations_default_text', 'option'); ?></option>
-		<?php
+			<?php
 			$custom_terms = get_terms($taxonomy, $args);
-			foreach($custom_terms as $term){
-				?>
+			foreach ($custom_terms
+
+			as $term){
+			?>
 			<option value="<?php echo $term->slug; ?>">
 				<?php
 				echo $term->name;
 				echo '</option>';
-			}
-		?>
+				}
+				?>
 		</select>
 	</label>
 	<?php

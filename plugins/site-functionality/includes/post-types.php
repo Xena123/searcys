@@ -149,7 +149,7 @@ function jobs() {
         'label'                 => __( 'Job', 'text_domain' ),
         'labels'                => $labels,
         'supports'              => array( 'title' ),
-        'taxonomies'            => array( 'category', 'post_tag' ),
+        'taxonomies'            => array( 'job_sector' ),
         'hierarchical'          => false,
         'public'                => true,
         'show_ui'               => true,

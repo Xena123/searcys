@@ -35,6 +35,14 @@
   }
 }
 
+.l-banner--venue, .l-banner--archive {
+  .l-banner-text {
+    @include mediaMax($bp-tablet-xl) {
+      top: 60%;
+    }
+  }
+}
+
 .l-banner--single {
   margin-bottom: 30px;
   height: 33vw;

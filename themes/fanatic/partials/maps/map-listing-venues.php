@@ -1,5 +1,5 @@
 
-<div class="acf-map">
+<div class="acf-map map__listing">
 
   <?php
       $args = array(

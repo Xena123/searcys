@@ -32,7 +32,9 @@ a {
 }
 
 p {
-  @include font-size(14, 17, 0);
+  @include font-size(16, 22, 0);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility; 
 }
 
 span {
@@ -43,6 +45,8 @@ li {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-alpha;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility; 
 }
 
 h1 {
@@ -98,11 +102,30 @@ table {
   border-collapse: collapse;
 }
 
+iframe {
+  //filter: grayscale(100%);
+}
+
 @font-face {
   font-family: 'Bau';
   //src: url('/searcys/wp-content/themes/fanatic/assets/fonts/Bau-Regular.woff') format('woff');
-  src: url('/wp-content/themes/fanatic/assets/fonts/Bau-Regular.woff') format('woff');
+  src: url('/wp-content/themes/fanatic/assets/fonts/Bau-Regular.woff') format('woff'), url('/wp-content/themes/fanatic/assets/fonts/Bau-Regular.ttf') format('truetype');
   font-weight: normal;
+
+}
+
+@font-face {
+  font-family: 'Bau';
+  //src: url('/searcys/wp-content/themes/fanatic/assets/fonts/Bau-Medium.woff') format('woff');
+  src: url('/wp-content/themes/fanatic/assets/fonts/Bau-Medium.woff') format('woff'), url('/wp-content/themes/fanatic/assets/fonts/Bau-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Bau';
+  //src: url('/searcys/wp-content/themes/fanatic/assets/fonts/Bau-Bold.woff') format('woff');
+  src: url('/wp-content/themes/fanatic/assets/fonts/Bau-Bold.woff') format('woff'), url('/wp-content/themes/fanatic/assets/fonts/Bau-Bold.ttf') format('truetype');
+  font-weight: 800;
 }
 
 .archive {

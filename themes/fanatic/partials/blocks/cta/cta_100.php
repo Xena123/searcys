@@ -1,7 +1,7 @@
-<!-- +++cta -->
+<!-- +++cta_100 -->
 <?php
   $img = get_sub_field('image');
-  $size = 'grid-twoThirds';
+  $size = 'hero-heading';
   $color = get_sub_field('color');
   $textColor = get_sub_field('text_color');
   $link = get_sub_field('link');

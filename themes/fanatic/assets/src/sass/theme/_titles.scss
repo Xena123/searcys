@@ -7,11 +7,11 @@
   text-transform: uppercase;
   text-align: center;
   color: $brand-blue;
-  margin: 25px 0 30px;
-  font-weight: bold;
+  margin: 25px 0 25px;
+  font-weight: $bold;
   @include mediaMin($bp-phone-l) {
     @include font-size(22, 22, 225);
-    margin: 30px 0 40px;
+    margin: 30px 0 30px;
   }
 }
 
@@ -19,20 +19,36 @@
   @include font-size(17.5, 17.5, 200);
   color: $brand-blue;
   margin-bottom: 15px;
-  font-weight: bold;
+  font-weight: $bold;
   text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  &:after {
+    content: '';
+    background-image: url('../img/icons/arrow.png');
+    background-repeat: no-repeat;
+    width: 17px;
+    height: 10px;
+    position: absolute;
+    top: 4px;
+    right: -25px;
+  }
 }
 
 .title--listing {
-  @include font-size(16, 16, 0);
+  @include font-size(16, 16, 100);
   color: $brand-blue;
-  margin-bottom: 20px;
-  font-weight: bold;
+  margin-bottom: 10px;
+  font-weight: $bold;
+  text-transform: uppercase;
   li {
     line-height: 2;
   }
   ul:last-child {
     font-weight: normal;
+  }
+  @include mediaMin($bp-laptop) {
+    margin-bottom: 20px;
   }
 }
 
@@ -54,7 +70,7 @@
 .title--cta {
   @include font-size(18, 30, 225);
   margin-bottom: 15px;
-  font-weight: bold;
+  font-weight: $bold;
   text-transform: uppercase;
   @include mediaMin($bp-phone-l) {
     @include font-size(22, 30, 225);
@@ -67,7 +83,7 @@
   text-align: center;
   color: $brand-blue;
   margin-bottom: 35px;
-  font-weight: bold;
+  font-weight: $bold;
 }
 
 .title--blog {
@@ -76,7 +92,7 @@
   text-align: left;
   color: $brand-blue;
   margin-bottom: 35px;
-  font-weight: bold;
+  font-weight: $bold;
 }
 
 .title--contact {
@@ -85,7 +101,7 @@
   text-align: left;
   color: $brand-blue;
   margin-bottom: 50px;
-  font-weight: bold;
+  font-weight: $bold;
 }
 
 .title--marker {
@@ -93,7 +109,7 @@
   color: $brand-blue;
   text-transform: uppercase;
   margin-bottom: 10px;
-  font-weight: bold;
+  font-weight: $bold;
 }
 
 .title--job {
@@ -101,7 +117,7 @@
   text-transform: uppercase;
   text-align: left;
   color: $brand-blue;
-  font-weight: bold;
+  font-weight: $bold;
   margin-bottom: 15px;
 }
 
@@ -110,5 +126,5 @@
   text-transform: uppercase;
   color: $brand-blue;
   margin-bottom: 20px;
-  font-weight: bold;
+  font-weight: $bold;
 }

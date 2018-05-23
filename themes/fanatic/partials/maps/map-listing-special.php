@@ -2,7 +2,7 @@
   $location = get_field('location_tax');
   $event = get_field('event_tax');
 ?>
-<div class="acf-map">
+<div class="acf-map map__listing">
 
   <?php
     $args = array(

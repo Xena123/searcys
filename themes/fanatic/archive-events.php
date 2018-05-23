@@ -2,7 +2,7 @@
 <!-- +++archive-events -->
 
 <main class="l-constrained grid__events">
-  <div class="title--section"><?php fanaticBlock( "eventTitle", "gd_single_line", 1, "gd_single_line", true ); ?></div>
+  <?php get_template_part( 'partials/banners/banner-single' ); ?>
   
   <?php
     $args = array(

@@ -19,7 +19,7 @@
     padding: 80px 50px 70px 7%;
   }
   @include mediaMin($bp-tablet-xl) {
-    padding: 0 50px 70px 7%;
+    padding: 0 50px 50px 7%;
     flex-wrap: nowrap;
   }
   > div {
@@ -42,8 +42,8 @@
     padding-top: 50px;
   }
   @include mediaMin($bp-tablet-xl) {
-    padding-top: 220px;
-    height: 350px;
+    padding-top: 160px;
+    min-height: 325px;
   }
   a {
     color: #fff;
@@ -53,6 +53,7 @@
     text-transform: uppercase;
     padding: 15px;
     @include font-size(20, 20, 250);
+    font-weight: $bold;
   }
   .sub-menu {
     padding-left: 20px;
@@ -66,6 +67,9 @@
         left: -7px;
       }
     }
+  }
+  > li {
+    margin-bottom: 15px;
   }
 }
 
@@ -103,6 +107,20 @@
   }
 }
 
+.nav__contact {
+  display: none;
+  background: transparent url('../img/icons/location.png') no-repeat center center;
+  @include mediaMax($bp-phone-l) {
+    display: block;
+    position: absolute;
+    z-index: 1000;
+    top: 48px;
+    right: 12px;
+    height: 34px;
+    width: 28px;
+  }
+}
+
 .nav--footer {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -118,7 +136,7 @@
     display: block;
     @include font-size(12, 12, 225);
     @include mediaMin($bp-phone-l) {
-      padding: 20px 0;
+      padding: 20px 0 10px;
       @include font-size(14, 14, 225);
     }
   }
@@ -163,7 +181,7 @@
         text-transform: uppercase;
         padding: 10px 0;
         color: $brand-blue;
-        @include font-size(12, 12, 100);
+        @include font-size(12, 12, 150);
       }
     }
   }
@@ -208,8 +226,8 @@
       padding-top: 0;
     }
     @include mediaMin($bp-tablet-xl) {
-      padding-top: 135px;
-      height: 265px;
+      padding-top: 115px;
+      min-height: 300px;
     }
   }
 }
@@ -228,6 +246,9 @@
     @include mediaMin($bp-phone-l) {
       background: transparent url('../img/icons/mail_white.png') no-repeat center center;
     }
+  }
+  .nav__contact {
+    background: transparent url('../img/icons/location_white.png') no-repeat center center;
   }
 }
 

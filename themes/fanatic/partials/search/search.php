@@ -1,4 +1,4 @@
-<fieldset id="venue-search">
+<fieldset id="venue-search" class="l-nav__search">
 	<form action="/">
 		<div class="filter-venues-wrapper">
 			<div>
@@ -10,11 +10,11 @@
 		</div>
 
 		<div class="filter-wrapper">
-			<div>
+			<div class="v-type">
 				<span class="reset-filter type hidden"><span></span></span>
 				<?php get_event_types_list(); ?>
 			</div>
-			<div>
+			<div class="v-location">
 				<span class="reset-filter location hidden"><span></span></span>
 				<?php get_event_location_list(); ?>
 			</div>

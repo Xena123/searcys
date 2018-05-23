@@ -3,6 +3,7 @@
   a {
     margin-right: 10px;
     flex-grow: 1;
+    white-space: nowrap;
     &:last-child {
       margin-right: 0;
     }

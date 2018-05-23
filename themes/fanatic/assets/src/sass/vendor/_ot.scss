@@ -1,0 +1,37 @@
+.ot-dtp-picker {
+  font-family: $font-alpha !important;
+  padding-top: 0 !important;
+  padding-left: 0 !important;
+}
+
+.ot-title {
+  font-family: $font-alpha;
+  color: $brand-blue;
+  text-transform: uppercase;
+  text-align: left !important;
+  margin-top: 0 !important;
+  @include font-size(22, 30, 200);
+}
+
+.picker__day--selected, .picker__day--highlighted, .picker__day--selected:hover, .picker__day--infocus:hover, .picker__day--outfocus:hover {
+  border: 2px solid $brand-blue !important;
+}
+
+.ot-dtp-picker input[type="submit"] {
+  font-family: $font-alpha !important;
+  text-transform: uppercase;
+  @include font-size(12, 12, 150);
+  box-shadow: none !important;
+}
+
+.ot-button {
+  background-color: $brand-blue !important;
+}
+
+.ot-powered-by {
+  display: none;
+}
+
+.picker__nav--next:hover, .picker__nav--prev:hover {
+  border-color: $brand-blue !important;
+}

@@ -53,8 +53,6 @@
 </div>
 <div class="l-header__social-mobile">
   <ul class="social">
-    <?php fanaticBlock( "telephone", "gd_link", 1, "gd_link", true ); ?>
-    <?php fanaticBlock( "mail", "gd_link", 1, "gd_link", true ); ?>
-    <li><a href="">Sign Up</a></li>
+    <li><a href="http://preferences.searcys.co.uk/" target="_blank">Subscribe</a></li>
   </ul>
 </div>

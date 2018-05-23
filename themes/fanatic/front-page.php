@@ -1,7 +1,6 @@
 <?php get_header(); ?>
 <!-- +++front-page -->
 <main class="l-constrained row__60">
-	<?php get_template_part( 'partials/search/search' ); ?>
   <?php get_template_part( 'partials/banners/banner-home' ); ?>
 
   

@@ -42,7 +42,7 @@
                 <a href="<?php the_permalink(); ?>">
                   <h2 class="title--listing"><?php the_title(); ?></h2>
                 </a>
-                <div class="t-text-grey">
+                <div class="t-text-grey listing__excerpt">
                   <?php echo $excerpt; ?>
                 </div>
                 <div class="row__cta btn__btm">

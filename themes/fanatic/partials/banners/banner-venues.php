@@ -10,8 +10,8 @@
 ?>
 
 <?php if ( $banner_image != '' ) { ?>
-<div class="l-banner l-banner--single">
-  
+<div class="l-banner l-banner--single l-banner--venue">
+  <?php get_template_part( 'partials/search/search' ); ?>
   <div class="l-banner-image image-overlay" style="background: transparent url('<?php echo $thumb['0']; ?>') no-repeat center center; background-size: cover;">
   </div>
   <div class="l-banner-text title--banner">

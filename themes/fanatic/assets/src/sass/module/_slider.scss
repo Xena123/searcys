@@ -4,21 +4,28 @@
 .l-slider__content {
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  min-height: 60%;
-  @include mediaMax($bp-tablet-s) {
+  @include mediaMax($bp-phone-l) {
     @include center-element();
     min-width: 80%;
+    top: 60%;
+  }
+  @include mediaMin($bp-phone-l) {
+    position: absolute;
+    top: 36%;
+    right: 30px;
+    left: 30px;
+    min-height: 50%;
   }
   @include mediaMin($bp-tablet-s) {
-    @include center-vertical();
-    max-width: 50%;
-    right: 20px;
+    max-width: 41%;
+    left: auto;
   }
   @include mediaMin($bp-tablet-m) {
-    max-width: 45%;
+    max-width: 44%;
   }
-  @include mediaMin($bp-tablet-l) {
-    max-width: 40%;
+  @include mediaMin($bp-laptop-s) {
+    top: 24%;
+    min-height: 60%;
   }
 }
 
@@ -32,8 +39,10 @@
   padding-top: 30px;
   padding-bottom: 10px;
   @include mediaMin($bp-tablet-xl) {
-    padding-top: 8%;
-    padding-bottom: 7%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+  }
+  @include mediaMin($bp-laptop-s) {
     max-width: 80%;
   }
   h1, p {
@@ -46,14 +55,14 @@
     @include mediaMin($bp-phone-l) {
       @include font-size(28, 32, 225);
     }
-    @include mediaMin($bp-tablet-xl) {
-      @include font-size(32, 43, 225);
+    @include mediaMin($bp-laptop-s) {
+      @include font-size(32, 40, 225);
     }
   }
   p {
     @include font-size(18, 22, 0);
     @include mediaMin($bp-tablet-xl) {
-      @include font-size(20, 28, 0);
+      @include font-size(18, 26, 0);
     }
   }
 }

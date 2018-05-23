@@ -1,0 +1,8 @@
+.listing__excerpt {
+  p {
+    @include font-size(14, 20, 0);
+    @include mediaMin($bp-laptop) {
+      @include font-size(16, 22, 0);
+    }
+  }
+}

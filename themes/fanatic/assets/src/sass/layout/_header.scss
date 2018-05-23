@@ -59,10 +59,10 @@
 
   .chart svg {
     position: absolute;
-    top: 120%;
+    top: 123%;
     right: 50%;
     transform: translateX(50%);
-    height: 50px;
+    height: 45px;
     width: auto;
     transition: all 0.4s;
     opacity: 0;
@@ -111,7 +111,7 @@
   z-index: 1000;
   right: 2.5%;
   margin-right: 15px;
-  top: 55px;
+  top: 60px;
   transition: 0.4s ease-in-out;
   img {
     max-height: 10px;
@@ -156,6 +156,11 @@
   @include mediaMax($bp-phone-l) {
     position: absolute;
   }
+}
+
+.l-header__div {
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
 .js-remove {

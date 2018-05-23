@@ -16,7 +16,7 @@
         
       <?php elseif( get_row_layout() == 'cta_box' ): ?>
       
-        <?php get_template_part( 'partials/blocks/cta' ); ?>
+        <?php get_template_part( 'partials/blocks/cta/cta_33' ); ?>
         
       <?php elseif( get_row_layout() == 'social_box' ): ?>
         
@@ -24,7 +24,7 @@
 
       <?php elseif( get_row_layout() == 'feature_box' ): ?>
         
-        <?php get_template_part( 'partials/blocks/feature' ); ?>
+        <?php get_template_part( 'partials/blocks/feature/feature_33' ); ?>
       
       <?php endif;  ?> <!-- end wysiwyg  -->
 

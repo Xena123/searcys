@@ -9,7 +9,7 @@
   li {
     margin-right: 18px;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: $bold;
     color: $brand-blue;
     &:last-child {
       margin-right: 0;

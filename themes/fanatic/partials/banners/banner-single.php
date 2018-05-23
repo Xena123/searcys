@@ -7,7 +7,7 @@
   $header = get_field('banner_header');
 ?>
 
-<?php if ( $banner_image != '' ) { ?>
+<?php if ( $banner_image ): ?>
 <div class="l-banner l-banner--single">
   
   <div class="l-banner-image image-overlay" style="background: transparent url('<?php echo $thumb['0']; ?>') no-repeat center center; background-size: cover;">
@@ -19,4 +19,7 @@
 
   <div class="block__overlay"></div>
 </div>
-<?php } ?>
+<?php else:  ?>
+<hr class="l-constrained l-header__div">
+<div class="title--section"><?php fanaticBlock( "Title-". $post->ID, "gd_single_line", 1, "gd_single_line", true ); ?></div>
+<?php endif;  ?>

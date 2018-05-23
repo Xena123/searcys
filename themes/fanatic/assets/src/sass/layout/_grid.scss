@@ -20,10 +20,13 @@
   @include column-full;
   .l-constrained--text {
     @include mediaMin($bp-phone-l) {
-      max-width: 80%;
+      max-width: 90%;
+    }
+    @include mediaMin($bp-tablet-s) {
+      max-width: 50%;
     }
     @include mediaMin($bp-laptop-s) {
-      max-width: 60%;
+      max-width: 32%;
     }
   }
 }
@@ -36,16 +39,16 @@
   @include column-half;
   .l-constrained--text {
     @include mediaMin($bp-phone-l) {
-      max-width: 80%;
+      max-width: 90%;
     }
     @include mediaMin($bp-tablet-s) {
-      max-width: 60%;
+      max-width: 50%;
     }
     @include mediaMin($break-col-half-2) {
-      max-width: 80%;
+      max-width: 100%;
     }
     @include mediaMin($bp-laptop-s) {
-      max-width: 60%;
+      max-width: 50%;
     }
   }
 }
@@ -54,10 +57,13 @@
   @include column-third;
   .l-constrained--text {
     @include mediaMin($bp-phone-l) {
-      max-width: 80%;
+      max-width: 90%;
+    }
+    @include mediaMin($bp-tablet-s) {
+      max-width: 50%;
     }
     @include mediaMin($bp-nav) {
-      max-width: 60%;
+      max-width: 50%;
     }
     @include mediaMin($bp-tablet-xl) {
       max-width: none;
@@ -69,16 +75,16 @@
   @include column-two-third;
   .l-constrained--text {
     @include mediaMin($bp-phone-l) {
-      max-width: 80%;
+      max-width: 90%;
     }
     @include mediaMin($bp-tablet-s) {
-      max-width: 60%;
+      max-width: 50%;
     }
     @include mediaMin($break-col-half-2) {
-      max-width: 80%;
+      max-width: 50%;
     }
     @include mediaMin($bp-laptop-s) {
-      max-width: 70%;
+      max-width: 50%;
     }
   }
 }

@@ -1,0 +1,36 @@
+#cookie-law-info-bar {
+  background-color: #fff !important;
+  color: $brand-blue !important;
+  width: 350px !important;
+  padding: 20px;
+  right: 80px;
+  border-top: none !important;
+  bottom: -100%;
+  box-shadow: 2px 0px 5px 0px #ccc;
+  a {
+    text-decoration: underline;
+    color: $brand-blue;
+  }
+  @include mediaMax($bp-phone-l) {
+    padding: 15px;
+    right: 0;
+  }
+  @include mediaMin($bp-max) {
+    right: 135px;
+  }
+}
+
+#cookie_action_close_header {
+  display: block;
+  background: $brand-blue !important;
+  text-shadow: none !important;
+  border: none !important;
+  //font-weight: normal !important;
+  //margin-top: 10px !important;
+  border-radius: 0;
+  @include font-size(12, 12, 150);
+  text-transform: uppercase;
+  width: 50%;
+  margin: 10px auto 0 !important;
+  text-decoration: none !important;
+}

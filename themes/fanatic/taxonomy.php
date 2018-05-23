@@ -4,9 +4,6 @@
   $term = get_queried_object();
   $term_id = get_queried_object_id();
   $tax = $term->taxonomy;
-  //print_r($tax);
-  //print_r($term_id);
-
 ?>
 
 <main class="l-constrained">
@@ -57,7 +54,7 @@
                 <a href="<?php the_permalink(); ?>">
                   <h2 class="title--listing"><?php the_title(); ?></h2>
                 </a>
-                <div class="t-text-grey">
+                <div class="t-text-grey listing__excerpt">
                   <?php echo $excerpt; ?>
                 </div>
                 <div data-lat="<?php echo $lat; ?>" data-lng="<?php echo $long; ?>"></div>

@@ -1,0 +1,54 @@
+.dmn-form {
+  width: 90% !important;
+  border: none !important;
+  font-family: $font-alpha !important;
+  input {
+    width: 96% !important;
+    border-radius: 0 !important;
+    height: 22px !important;
+    font-family: $font-alpha !important;
+    &:focus {
+      outline: none !important;
+      //border: none !important;
+      border-color: #b3b3b3 !important;
+      box-shadow: none !important;
+    }
+  }
+  input[disabled], select[disabled] {
+    background-color: #ccc !important;
+  }
+  select {
+    width: 100% !important;
+    border-radius: 0 !important;
+    -webkit-appearance: none;
+    font-family: $font-alpha !important;
+    &:focus {
+      outline: none !important;
+
+    }
+  }
+  label {
+    font-family: $font-alpha !important;
+  }
+  h1 {
+    text-align: left !important;
+    font-family: $font-alpha !important;
+    color: $brand-blue !important;
+    @include font-size(22, 30, 225);
+    margin-bottom: 12px;
+  }
+  .btn-primary {
+    background-color: $brand-blue !important;
+    background-image: none !important;
+    border: none !important;
+    font-size: 16px !important;
+    letter-spacing: 1.8px !important;
+    height: 48px !important;
+    
+  }
+  .powered-by {
+    display: none;
+  }
+
+}
+

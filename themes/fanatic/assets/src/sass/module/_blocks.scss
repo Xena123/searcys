@@ -52,7 +52,7 @@
     @include font-size(16, 16, 0);
     text-transform: uppercase;
     color: $brand-blue;
-    font-weight: bold;
+    font-weight: $bold;
     margin-bottom: 20px;
     display: block;
     @include mediaMin($bp-tablet-xl) {
@@ -63,7 +63,7 @@
     @include font-size(22, 40, 100);
     text-transform: uppercase;
     color: $brand-blue;
-    font-weight: bold;
+    font-weight: $bold;
     
   }
 }
@@ -73,7 +73,7 @@
 
   h1, h2, h3, h4 {
     margin-bottom: 20px;
-    font-weight: bold;
+    font-weight: $bold;
     text-transform: uppercase;
     color: $brand-blue;
   }
@@ -151,6 +151,9 @@
 }
 
 .block__half {
+  height: 175px;
+}
+.block__slider {
   @include mediaMin($bp-tablet-xl) {
     height: 175px;
   }

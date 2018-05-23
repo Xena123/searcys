@@ -1,6 +1,8 @@
 <!-- +++Banner-home -->
 
 <div class="l-banner l-banner__slider">
+  
+<?php get_template_part( 'partials/search/search' ); ?>
 
 <?php if( have_rows('slider') ): ?>
 

@@ -2,7 +2,8 @@
 <!-- +++home -->
 
 <main class="l-constrained grid__blog">
-  <div class="title--section"><?php single_post_title(); ?></div>
+  <?php get_template_part( 'partials/banners/banner-single' ); ?>
+  
   <?php
     $args = array(
       'post_type' => 'post', 
